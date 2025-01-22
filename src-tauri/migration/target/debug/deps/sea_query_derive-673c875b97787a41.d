@@ -1,0 +1,10 @@
+/Users/ck/Documents/Projects/openSource/pasty/pasty/src-tauri/migration/target/debug/deps/libsea_query_derive-673c875b97787a41.dylib: /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/lib.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/mod.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/attr.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/error.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/path.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/write_arm.rs
+
+/Users/ck/Documents/Projects/openSource/pasty/pasty/src-tauri/migration/target/debug/deps/sea_query_derive-673c875b97787a41.d: /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/lib.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/mod.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/attr.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/error.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/path.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/write_arm.rs
+
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/lib.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/mod.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/attr.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/error.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/path.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sea-query-derive-0.4.2/src/iden/write_arm.rs:

@@ -1,0 +1,10 @@
+/Users/ck/Documents/Projects/openSource/pasty/pasty/src-tauri/migration/target/debug/deps/libproc_macro2_diagnostics-815883ebb189129d.rmeta: /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/ck/Documents/Projects/openSource/pasty/pasty/src-tauri/migration/target/debug/deps/libproc_macro2_diagnostics-815883ebb189129d.rlib: /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/ck/Documents/Projects/openSource/pasty/pasty/src-tauri/migration/target/debug/deps/proc_macro2_diagnostics-815883ebb189129d.d: /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/lib.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/ext.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs /Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/line.rs
+
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/lib.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/ext.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/diagnostic.rs:
+/Users/ck/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-diagnostics-0.10.1/src/line.rs:
