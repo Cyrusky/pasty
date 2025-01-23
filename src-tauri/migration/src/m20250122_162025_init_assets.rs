@@ -1,4 +1,4 @@
-use entity::assets::Asset;
+use entities::assets::Asset;
 use sea_orm_migration::{prelude::*, schema::*};
 
 #[derive(DeriveMigrationName)]

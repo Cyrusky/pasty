@@ -1248,7 +1248,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3d8a32ae18130a3c84dd492d4215c3d913c3b07c6b63c2eb3eb7ff1101ab7bf"
 
 [[package]]
-name = "entity"
+name = "entities"
 version = "0.1.0"
 dependencies = [
  "sea-orm",
@@ -2594,7 +2594,7 @@ name = "migration"
 version = "0.1.0"
 dependencies = [
  "async-std",
- "entity",
+ "entities",
  "sea-orm",
  "sea-orm-migration",
  "utils",
@@ -3147,10 +3147,11 @@ dependencies = [
 name = "pasty"
 version = "0.1.0"
 dependencies = [
- "entity",
+ "entities",
  "migration",
  "serde",
  "serde_json",
+ "storage",
  "tauri",
  "tauri-build",
  "tauri-plugin-opener",
@@ -4719,6 +4720,15 @@ name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
+
+[[package]]
+name = "storage"
+version = "0.1.0"
+dependencies = [
+ "entities",
+ "sea-orm",
+ "utils",
+]
 
 [[package]]
 name = "string_cache"

@@ -1,4 +1,4 @@
-use entity::pasty::Pasty;
+use entities::pasty::Pasty;
 use sea_orm_migration::{prelude::*, schema::*};
 
 #[derive(DeriveMigrationName)]

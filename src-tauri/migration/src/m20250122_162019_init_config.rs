@@ -1,4 +1,4 @@
-use entity::configs::Config;
+use entities::configs::Config;
 use sea_orm_migration::{prelude::*, schema::*};
 
 #[derive(DeriveMigrationName)]
