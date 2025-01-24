@@ -1,14 +1,14 @@
-/* eslint-disable */
+ 
 
 import React from 'react';
-import IconHome from './IconHome';
-export { default as IconHome } from './IconHome';
+import IconHome from './IconHome.js';
+
+export { default as IconHome } from "./IconHome.js";
 
 const IconFont = ({ name, ...rest }) => {
   switch (name) {
-    case 'home':
+    case "home":
       return <IconHome {...rest} />;
-
   }
 
   return null;

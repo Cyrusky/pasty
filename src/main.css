@@ -2,3 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    background-color: transparent !important;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#root {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 600px;
+    background: transparent !important;
+    border-radius: 5px;
+    overflow: hidden;
+}

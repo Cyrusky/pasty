@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { BaseService } from "@/services/BaseService.ts";
+import { BaseService } from "@/libs/services/BaseService.ts";
 
 @injectable()
 export class DatabaseService extends BaseService {

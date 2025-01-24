@@ -1,12 +1,18 @@
 import { MainPage } from "@/pages/mainPage.tsx";
+import { SettingPage } from "@/pages/settingPage";
 
-const paths = {
-  home: "/",
+export const paths = {
+  home: "/main",
+  settings: "/settings",
 };
 
 export const routes = [
   {
     path: paths.home,
     element: <MainPage />,
+  },
+  {
+    path: paths.settings,
+    element: <SettingPage />,
   },
 ];

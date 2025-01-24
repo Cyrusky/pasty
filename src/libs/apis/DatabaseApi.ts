@@ -1,5 +1,5 @@
 import type { IApi } from "@/types";
-import { BaseApi } from "@/apis/baseApi.ts";
+import { BaseApi } from "@/libs/apis/baseApi.ts";
 import { injectable } from "inversify";
 
 @injectable()

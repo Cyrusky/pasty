@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import { routes } from "@/router/routes.tsx";
+import { paths, routes } from "@/router/routes.tsx";
 
 export const Router = () => {
   return (
@@ -7,7 +7,7 @@ export const Router = () => {
       {routes.map((route) => (
         <Route key={route.path} path={route.path} element={route.element} />
       ))}
-      <Route path="*" element={<Navigate to={routes[0].path} />} />
+      <Route path="*" element={<Navigate to={paths.settings} />} />
     </Routes>
   );
 };
