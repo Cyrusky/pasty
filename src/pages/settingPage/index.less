@@ -1,0 +1,27 @@
+.theme-set {
+@apply rounded-box grid gap-4 grid-cols-3;
+
+  .theme-item {
+  @apply overflow-hidden rounded-lg border outline outline-2 outline-offset-2 outline-transparent;
+
+    .theme-preview {
+    @apply bg-base-100 text-base-content w-full cursor-pointer font-sans;
+    }
+
+    .theme-color-1 {
+    @apply bg-base-200 col-start-1 row-span-2 row-start-1;
+    }
+
+    .theme-color-2 {
+    @apply bg-base-300 col-start-1 row-start-3;
+    }
+
+    .theme-color-text {
+    @apply flex aspect-square items-center justify-center rounded;
+    }
+
+    .active {
+    @apply border-primary;
+    }
+  }
+}

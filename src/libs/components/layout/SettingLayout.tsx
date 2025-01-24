@@ -10,8 +10,8 @@ export const SettingLayout: FC<SettingLayoutProps> = ({
   rightPanel,
 }) => {
   return (
-    <div className="flex flex-row h-full bg-base-200">
-      <div className="w-56 border-r-2 border-r-base-100">{leftPanel}</div>
+    <div className="flex flex-row h-full">
+      <div className="w-56 p-3 border-r-2 border-r-base-100">{leftPanel}</div>
       <div className="flex-1 p-3">{rightPanel}</div>
     </div>
   );

@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 html {
-    background-color: transparent !important;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;

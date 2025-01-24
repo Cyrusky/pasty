@@ -4,6 +4,10 @@
       "title": "设置",
       "appearance": "外观 & 主题",
       "clipboard": "剪贴板设置"
+    },
+    "field": {
+      "required": "必填",
+      "theme": "主题"
     }
   }
 }

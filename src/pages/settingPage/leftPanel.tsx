@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { FaClipboardList } from "react-icons/fa6";
 import { PiPaintBucketFill } from "react-icons/pi";
 import { map } from "lodash-es";
+import { PanelHeader } from "@/libs/components/PanelHeader.tsx";
 
 export const SettingLeftPanel = observer(() => {
   const { t } = useTranslation();
@@ -22,22 +23,27 @@ export const SettingLeftPanel = observer(() => {
   };
 
   return (
-    <ul className="menu h-full">
-      {map(SettingMenu, (menu) => (
-        <li key={menu} className="mb-2">
-          <a
-            onClick={() => {
-              settingUIStore.switchSettingMenu(menu);
-            }}
-            className={clsx({
-              active: isSelected(menu),
-            })}
-          >
-            {icons[menu]}
-            {t(`settings.menu.${menu}`)}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div className="h-full">
+      <PanelHeader>
+        <div className="text-center size:25px">Pasty Setting</div>
+      </PanelHeader>
+      <ul className="menu h-full">
+        {map(SettingMenu, (menu) => (
+          <li key={menu} className="mb-2">
+            <a
+              onClick={() => {
+                settingUIStore.switchSettingMenu(menu);
+              }}
+              className={clsx({
+                active: isSelected(menu),
+              })}
+            >
+              {icons[menu]}
+              {t(`settings.menu.${menu}`)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 });
