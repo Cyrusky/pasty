@@ -1,4 +1,4 @@
-import { MainPage } from "@/pages/mainPage.tsx";
+import { MainPage } from "@/pages/mainPage";
 import { SettingPage } from "@/pages/settingPage";
 
 export const paths = {

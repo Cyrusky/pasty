@@ -17,7 +17,7 @@ export class SettingStore {
     });
   }
 
-  _theme: Themes = Themes.light;
+  _theme: Themes = Themes.emerald;
 
   get theme(): Themes {
     return this._theme;
