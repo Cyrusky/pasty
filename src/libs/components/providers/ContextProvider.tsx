@@ -8,6 +8,9 @@ import { DatabaseApi } from "@/libs/apis/DatabaseApi.ts";
 import { PasteListStore } from "@/libs/stores/PasteListStore.ts";
 import { AppService } from "@/libs/services/AppService.ts";
 import { SettingService } from "@/libs/services/SettingService.ts";
+import { SettingStore } from "@/libs/stores/SettingStore.ts";
+import { SettingUIStore } from "@/libs/stores/SettingUIStore.ts";
+import { PastingUIStore } from "@/libs/stores/PastingUIStore.ts";
 
 export const Services: IServiceType = {
   get [ServiceNames.Database]() {
@@ -32,7 +35,13 @@ export const Stores: IStoreType = {
     return IOC.get<PasteListStore>(StoreNames.PastList);
   },
   get [StoreNames.Setting]() {
-    return IOC.get<PasteListStore>(StoreNames.Setting);
+    return IOC.get<SettingStore>(StoreNames.Setting);
+  },
+  get [StoreNames.SettingUIStore]() {
+    return IOC.get<SettingUIStore>(StoreNames.SettingUIStore);
+  },
+  get [StoreNames.PastingUIStore]() {
+    return IOC.get<PastingUIStore>(StoreNames.PastingUIStore);
   },
 };
 

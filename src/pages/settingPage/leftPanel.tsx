@@ -8,6 +8,7 @@ import { FaClipboardList } from "react-icons/fa6";
 import { PiPaintBucketFill } from "react-icons/pi";
 import { map } from "lodash-es";
 import { PanelHeader } from "@/libs/components/PanelHeader.tsx";
+import { invoke } from "@tauri-apps/api/core";
 
 export const SettingLeftPanel = observer(() => {
   const { t } = useTranslation();
@@ -20,6 +21,10 @@ export const SettingLeftPanel = observer(() => {
 
   const isSelected = (menu: SettingMenu) => {
     return settingUIStore.activeSettingMenu === menu;
+  };
+
+  const handleCall = () => {
+    invoke("init_listener");
   };
 
   return (
@@ -43,6 +48,8 @@ export const SettingLeftPanel = observer(() => {
             </a>
           </li>
         ))}
+
+        <li onClick={handleCall}>123</li>
       </ul>
     </div>
   );

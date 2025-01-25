@@ -10,6 +10,7 @@ import ReactDOM from "react-dom/client";
 import { ContextProvider } from "@/libs/components/providers/ContextProvider.tsx";
 import { Router } from "@/router";
 import styled from "styled-components";
+import { EventListeners } from "@/libs/components/EventListeners.tsx";
 
 const Container = styled.div`
   width: 100%;
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <ContextProvider>
+        <EventListeners />
         <Container>
           <Router />
         </Container>

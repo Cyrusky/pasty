@@ -5,5 +5,5 @@ use migration::migrate;
 #[tokio::main]
 async fn main() {
     migrate().await;
-    pasty_lib::run()
+    pasty_lib::run();
 }
