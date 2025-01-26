@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "menu": {
+      "title": "Settings",
+      "appearance": "Appearance & Theme",
+      "clipboard": "Clipboard"
+    },
+    "field": {
+      "required": "Required",
+      "theme": "Themes"
+    }
+  },
+  "main": {
+    "search-panel": {
+      "search": "Type to search... (Only text pasty supported)"
+    },
+    "empty-text": "Nothing in pasty history, please try to copy something."
+  }
+}

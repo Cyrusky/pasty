@@ -1,6 +1,6 @@
 @total-height: 600px;
 @total-width: 800px;
-@search-height: 64px;
+@search-height: 80px;
 @bottom-height: 48px;
 @expand-width: 50%;
 @padding: 24px;
@@ -11,7 +11,11 @@
   @apply flex flex-col gap-0 flex-nowrap;
   .search-box {
     height: @search-height;
-    line-height: @search-height;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    width: 100%;
     padding: 0 @padding;
   }
 
@@ -51,5 +55,17 @@
     padding: 0 @padding;
     height: @bottom-height;
     line-height: @bottom-height;
+    @apply flex flex-row flex-nowrap items-center;
+
+    .left-tips {
+
+    }
+    .right-tips {
+      @apply flex flex-row flex-nowrap gap-3 flex-1;
+      justify-content: flex-end;
+      svg {
+        cursor: pointer;
+      }
+    }
   }
 }

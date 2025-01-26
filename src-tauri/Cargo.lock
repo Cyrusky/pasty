@@ -3647,6 +3647,7 @@ dependencies = [
  "migration",
  "once_cell",
  "parking_lot",
+ "sea-orm",
  "serde",
  "serde_json",
  "storage",

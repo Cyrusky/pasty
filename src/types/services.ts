@@ -1,15 +1,12 @@
-import type { IInitializer } from "@/types/common.ts";
 import type { ServiceNames } from "@/libs/constants/ServiceNames.ts";
-import type { DatabaseService } from "@/libs/services/Database.ts";
+import type { PastyService } from "@/libs/services/PastyService.ts";
 import type { AppService } from "@/libs/services/AppService.ts";
 import type { SettingService } from "@/libs/services/SettingService.ts";
+import type { ApiService } from "@/libs/services/ApiService.ts";
 
 export interface IServiceType {
-  [ServiceNames.Database]: DatabaseService;
+  [ServiceNames.PastyService]: PastyService;
   [ServiceNames.App]: AppService;
   [ServiceNames.Setting]: SettingService;
-}
-
-export interface IService extends IInitializer {
-  // TODO: Define the properties of the service
+  [ServiceNames.ApiService]: ApiService;
 }

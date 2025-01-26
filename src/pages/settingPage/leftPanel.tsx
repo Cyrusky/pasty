@@ -8,6 +8,9 @@ import { FaClipboardList } from "react-icons/fa6";
 import { PiPaintBucketFill } from "react-icons/pi";
 import { map } from "lodash-es";
 import { PanelHeader } from "@/libs/components/PanelHeader.tsx";
+import { IoArrowBack } from "react-icons/io5";
+import { NavLink } from "react-router";
+import { paths } from "@/router/routes.tsx";
 
 export const SettingLeftPanel = observer(() => {
   const { t } = useTranslation();
@@ -25,7 +28,12 @@ export const SettingLeftPanel = observer(() => {
   return (
     <div className="h-full">
       <PanelHeader>
-        <div className="text-center size:25px">Pasty Setting</div>
+        <div>
+          <NavLink to={paths.home} viewTransition>
+            <IoArrowBack className="fixed left-5 top-5" />
+          </NavLink>
+          <div className="text-center size:25px">Pasty Setting</div>
+        </div>
       </PanelHeader>
       <ul className="menu h-full">
         {map(SettingMenu, (menu) => (

@@ -12,8 +12,9 @@ impl MigrationTrait for Migration {
                 Table::create()
                     .table(Pasty::Table)
                     .if_not_exists()
-                    .col(pk_uuid(Pasty::Id))
-                    .col(string(Pasty::PastType))
+                    .col(pk_uuid(Pasty::Id).not_null())
+                    .col(string(Pasty::PastyType).not_null())
+                    .col(string(Pasty::Thumbnail).null())
                     .col(string(Pasty::Content))
                     .col(date_time(Pasty::CreatedAt))
                     .to_owned(),

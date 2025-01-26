@@ -1,5 +1,6 @@
 export enum ServiceNames {
-  Database = "DatabaseService",
+  PastyService = "DatabaseService",
   App = "AppService",
   Setting = "SettingService",
+  ApiService = "ApiService",
 }

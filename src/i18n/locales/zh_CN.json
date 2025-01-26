@@ -9,5 +9,11 @@
       "required": "必填",
       "theme": "主题"
     }
+  },
+  "main": {
+    "search-panel": {
+      "search": "输入搜索...(仅支持文本搜索)"
+    },
+    "empty-text": "没有剪贴板历史记录，复制点什么试试吧。"
   }
 }

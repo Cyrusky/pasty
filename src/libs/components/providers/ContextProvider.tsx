@@ -3,7 +3,7 @@ import { ApiNames, ServiceNames, StoreNames } from "@/libs/constants";
 import { IOC } from "@/libs/container";
 import { ApiContext, ServiceContext, StoreContext } from "@/hooks/providers.ts";
 import { FC, PropsWithChildren } from "react";
-import { DatabaseService } from "@/libs/services/Database.ts";
+import { PastyService } from "@/libs/services/PastyService.ts";
 import { DatabaseApi } from "@/libs/apis/DatabaseApi.ts";
 import { PasteListStore } from "@/libs/stores/PasteListStore.ts";
 import { AppService } from "@/libs/services/AppService.ts";
@@ -13,8 +13,8 @@ import { SettingUIStore } from "@/libs/stores/SettingUIStore.ts";
 import { PastingUIStore } from "@/libs/stores/PastingUIStore.ts";
 
 export const Services: IServiceType = {
-  get [ServiceNames.Database]() {
-    return IOC.get<DatabaseService>(ServiceNames.Database);
+  get [ServiceNames.PastyService]() {
+    return IOC.get<PastyService>(ServiceNames.PastyService);
   },
   get [ServiceNames.App]() {
     return IOC.get<AppService>(ServiceNames.App);
@@ -31,8 +31,8 @@ export const Apis: IApiType = {
 };
 
 export const Stores: IStoreType = {
-  get [StoreNames.PastList]() {
-    return IOC.get<PasteListStore>(StoreNames.PastList);
+  get [StoreNames.PastListStore]() {
+    return IOC.get<PasteListStore>(StoreNames.PastListStore);
   },
   get [StoreNames.Setting]() {
     return IOC.get<SettingStore>(StoreNames.Setting);

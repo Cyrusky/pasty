@@ -3,12 +3,14 @@ use serde::{Deserialize, Serialize};
 use std::fmt::Debug;
 
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
-#[sea_orm(table_name = "posts")]
+#[sea_orm(table_name = "pasty")]
+#[serde(rename_all = "camelCase")]
 pub struct Model {
     #[sea_orm(primary_key)]
     #[sea_orm(unique)]
     pub id: Uuid,
-    pub past_type: String,
+    pub pasty_type: String,
+    pub thumbnail: String,
     pub content: String,
     pub created_at: DateTime,
 }
@@ -22,7 +24,8 @@ impl ActiveModelBehavior for ActiveModel {}
 pub enum Pasty {
     Table,
     Id,
-    PastType,
+    PastyType,
+    Thumbnail,
     Content,
     CreatedAt,
 }

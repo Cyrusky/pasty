@@ -9,7 +9,7 @@ impl PastyStore {
         form_data: pasty::Model,
     ) -> Result<pasty::ActiveModel, DbErr> {
         pasty::ActiveModel {
-            past_type: Set(form_data.past_type.to_owned()),
+            pasty_type: Set(form_data.pasty_type.to_owned()),
             content: Set(form_data.content.to_owned()),
             ..Default::default()
         }
@@ -26,10 +26,10 @@ impl PastyStore {
 
     pub async fn list_pastes_by_type(
         db: &DbConn,
-        past_type: &str,
+        pasty_type: &str,
     ) -> Result<Vec<pasty::Model>, DbErr> {
         pasty::Entity::find()
-            .filter(pasty::Column::PastType.contains(past_type))
+            .filter(pasty::Column::PastyType.contains(pasty_type))
             .order_by_desc(pasty::Column::CreatedAt)
             .all(db)
             .await

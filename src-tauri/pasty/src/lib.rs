@@ -1,11 +1,13 @@
+mod biz;
 mod commands;
 mod core;
 
 use commands::greeting::{greet, greeting, init_listener};
+use commands::pasty::get_paged_pasty;
 use tauri::{App, Manager};
-
 fn setup(app: &mut App) {
     core::handler::Handle::global().init(app.app_handle());
+    core::database::init();
     core::clipboard::ClipboardWatcher::start();
 }
 
@@ -18,9 +20,15 @@ pub fn run() {
         .plugin(tauri_plugin_log::Builder::new().build())
         .setup(|app| {
             setup(app);
+            log::trace!("Setup finished.");
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![greet, greeting, init_listener])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            greeting,
+            init_listener,
+            get_paged_pasty
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

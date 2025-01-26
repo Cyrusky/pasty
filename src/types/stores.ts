@@ -5,7 +5,7 @@ import type { PastingUIStore } from "@/libs/stores/PastingUIStore.ts";
 import type { SettingUIStore } from "@/libs/stores/SettingUIStore.ts";
 
 export interface IStoreType {
-  [StoreNames.PastList]: PasteListStore;
+  [StoreNames.PastListStore]: PasteListStore;
   [StoreNames.Setting]: SettingStore;
   [StoreNames.PastingUIStore]: PastingUIStore;
   [StoreNames.SettingUIStore]: SettingUIStore;

@@ -23,7 +23,8 @@ impl Handle {
     }
 
     pub fn get_window(&self) -> Option<WebviewWindow> {
-        self.app_handle.lock()
+        self.app_handle
+            .lock()
             .as_ref()
             .and_then(|a| a.get_webview_window("main"))
     }

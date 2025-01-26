@@ -6,6 +6,7 @@ import { useService } from "@/hooks/useService.ts";
 import clsx from "clsx";
 import { useStore } from "@/hooks";
 import camelcase from "camelcase";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 export const AppearanceForm = observer(() => {
   const colors = ["primary", "secondary", "accent", "neutral"];
@@ -24,13 +25,16 @@ export const AppearanceForm = observer(() => {
             onClick={() => handleClickTheme(theme)}
             key={key}
             className={clsx(
-              "rounded-box border-base-content/20 hover:border-base-content/40 cursor-pointer",
+              "rounded-md cursor-pointer relative border-2 overflow-hidden",
+              settingStore.theme === theme
+                ? "border-green-500"
+                : "border-base-content/20",
               { active: settingStore.theme === theme },
             )}
             data-act-class="!outline-base-content"
             data-set-theme={theme}
           >
-            <div className="theme-preview border-2" data-theme={theme}>
+            <div className="theme-preview" data-theme={theme}>
               <div className="grid grid-cols-5 grid-rows-3">
                 <div className="theme-color-1"></div>
                 <div className="theme-color-2"></div>
@@ -52,6 +56,9 @@ export const AppearanceForm = observer(() => {
                 </div>
               </div>
             </div>
+            {settingStore.theme === theme && (
+              <FaRegCheckCircle className="absolute right-2 bottom-2 text-green-500" />
+            )}
           </div>
         ))}
       </div>

@@ -1,0 +1,9 @@
+[package]
+name = "storage"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+entities = { path = "../entities" }
+utils = { path = "../utils" }
+sea-orm = { version = "1.1.4", features = ["sqlx-sqlite"] }

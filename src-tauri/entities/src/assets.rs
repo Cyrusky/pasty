@@ -12,13 +12,13 @@ pub enum PastType {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, DeriveEntityModel, Serialize, Deserialize)]
-#[sea_orm(table_name = "posts")]
+#[sea_orm(table_name = "asset")]
 pub struct Model {
     #[sea_orm(primary_key)]
     #[sea_orm(unique)]
     pub id: Uuid,
     pub pasty_id: Uuid,
-    pub past_type: String,
+    pub pasty_type: String,
     pub asset_path: String,
     pub created_at: DateTime,
 }
@@ -33,7 +33,7 @@ pub enum Asset {
     Table,
     Id,
     PastyId,
-    PastType,
+    PastyType,
     AssetPath,
     CreatedAt,
 }

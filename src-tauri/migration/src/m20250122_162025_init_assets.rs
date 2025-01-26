@@ -14,7 +14,7 @@ impl MigrationTrait for Migration {
                     .if_not_exists()
                     .col(pk_uuid(Asset::Id))
                     .col(string(Asset::PastyId).not_null())
-                    .col(string(Asset::PastType).not_null())
+                    .col(string(Asset::PastyType).not_null())
                     .col(string(Asset::AssetPath))
                     .col(date_time(Asset::CreatedAt).not_null())
                     .to_owned(),

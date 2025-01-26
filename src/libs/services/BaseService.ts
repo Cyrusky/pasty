@@ -1,8 +1,7 @@
-import { IService } from "@/types/services.ts";
 import { injectable } from "inversify";
 
 @injectable()
-export class BaseService implements IService {
+export class BaseService {
   init(): void {
     throw new Error("Method not implemented.");
   }

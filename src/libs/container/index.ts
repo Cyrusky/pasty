@@ -1,8 +1,7 @@
 import { Container } from "inversify";
 import { ServiceNames } from "@/libs/constants/ServiceNames.ts";
-import type { IService } from "@/types/services.ts";
 import { ApiNames, StoreNames } from "@/libs/constants";
-import { DatabaseService } from "@/libs/services/Database.ts";
+import { PastyService } from "@/libs/services/PastyService.ts";
 import { DatabaseApi } from "@/libs/apis/DatabaseApi.ts";
 import { AppService } from "@/libs/services/AppService.ts";
 import { PasteListStore } from "@/libs/stores/PasteListStore.ts";
@@ -10,6 +9,7 @@ import { SettingService } from "@/libs/services/SettingService.ts";
 import { SettingStore } from "@/libs/stores/SettingStore.ts";
 import { PastingUIStore } from "@/libs/stores/PastingUIStore.ts";
 import { SettingUIStore } from "@/libs/stores/SettingUIStore.ts";
+import { ApiService } from "@/libs/services/ApiService.ts";
 
 export class IOC {
   static instance: IOC;
@@ -31,16 +31,17 @@ export class IOC {
   }
 
   private bindServices() {
+    this.container.bind<ApiService>(ServiceNames.ApiService).to(ApiService);
     this.container
-      .bind<IService>(ServiceNames.Database)
-      .to(DatabaseService)
+      .bind<PastyService>(ServiceNames.PastyService)
+      .to(PastyService)
       .inSingletonScope();
     this.container
-      .bind<IService>(ServiceNames.App)
+      .bind<AppService>(ServiceNames.App)
       .to(AppService)
       .inSingletonScope();
     this.container
-      .bind<IService>(ServiceNames.Setting)
+      .bind<SettingService>(ServiceNames.Setting)
       .to(SettingService)
       .inSingletonScope();
   }
@@ -51,7 +52,7 @@ export class IOC {
 
   private bindStores() {
     this.container
-      .bind<PasteListStore>(StoreNames.PastList)
+      .bind<PasteListStore>(StoreNames.PastListStore)
       .to(PasteListStore)
       .inSingletonScope();
     this.container
