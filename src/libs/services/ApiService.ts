@@ -1,21 +1,66 @@
-import { inject, injectable } from "inversify";
-import { CommandsName, StoreNames } from "@/libs/constants";
-import type { PasteListStore } from "@/libs/stores/PasteListStore.ts";
+import { injectable } from "inversify";
 import { invoke } from "@tauri-apps/api/core";
+import type {
+  ApiResult,
+  ConfigKeys,
+  ConfigModel,
+  IApiService,
+  PagedApiResult,
+  PagedRequest,
+  PastyModel,
+} from "@/types";
+import { CommandsName } from "@/types";
 
 @injectable()
-export class ApiService {
-  constructor(
-    @inject(StoreNames.PastListStore) private pasteListStore: PasteListStore,
-  ) {}
-
-  async getAllPasty(page: number, pageSize: number) {
-    const result = await invoke(CommandsName.getPagedPasty, {
-      request: {
-        page,
-        pageSize,
-      },
+export class ApiService implements IApiService {
+  async updateConfigByKey(
+    key: ConfigKeys,
+    value: string,
+  ): Promise<ConfigModel> {
+    return await invoke<ConfigModel>(CommandsName.updateConfigByKey, {
+      key,
+      value,
     });
-    console.log(result);
+  }
+
+  async listAllConfig(): Promise<ConfigModel[]> {
+    return await invoke<ConfigModel[]>(CommandsName.listAllConfig);
+  }
+
+  async getConfigByKey(key: ConfigKeys): Promise<ConfigModel> {
+    return await invoke<ConfigModel>(CommandsName.getConfigByKey, {
+      key,
+    });
+  }
+
+  async deleteConfigByKey(key: ConfigKeys): Promise<ConfigModel> {
+    return await invoke<ConfigModel>(CommandsName.deleteConfigByKey, {
+      key,
+    });
+  }
+
+  async addConfig(key: ConfigKeys, value: string): Promise<ConfigModel> {
+    return await invoke<ConfigModel>(CommandsName.addConfig, { key, value });
+  }
+
+  async clearAllConfig(): Promise<number> {
+    return await invoke<number>(CommandsName.clearAllConfig);
+  }
+
+  async getPagedPasty(
+    request: PagedRequest,
+  ): Promise<PagedApiResult<PastyModel>> {
+    return await invoke<PagedApiResult<PastyModel>>(
+      CommandsName.getPagedPasty,
+      { request },
+    );
+  }
+
+  async clearPasty(): Promise<ApiResult<number>> {
+    return await invoke<ApiResult<number>>(CommandsName.clearAllPasty);
+  }
+
+  async getAllPasty() {
+    return await invoke<ApiResult<PastyModel>>(CommandsName.getAllPasty);
   }
 }

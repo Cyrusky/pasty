@@ -5,7 +5,7 @@ mod core;
 use commands::config::{
     add_config, clear_all_config, delete_config_by_key, get_config_by_key, list_all_config,
 };
-use commands::pasty::get_paged_pasty;
+use commands::pasty::{clear_all_pasty, get_all_pasty, get_paged_pasty};
 use tauri::{App, Manager};
 fn setup(app: &mut App) {
     core::handler::Handle::global().init(app.app_handle());
@@ -28,6 +28,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             // Pasty Command
             get_paged_pasty,
+            clear_all_pasty,
+            get_all_pasty,
             // Config Commands
             list_all_config,
             add_config,

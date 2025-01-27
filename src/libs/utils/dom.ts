@@ -1,4 +1,4 @@
-import type { Themes } from "@/libs/constants/settings.ts";
+import type { Themes } from "@/libs/constants/configs.ts";
 
 export const changeTheme = (theme: Themes) => {
   const htmlTag = document.querySelector("html");

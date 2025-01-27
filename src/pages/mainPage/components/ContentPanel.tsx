@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { uniqueId } from "lodash-es";
 import { useService } from "@/hooks/useService.ts";
 import { ServiceNames } from "@/libs/constants";
@@ -21,6 +21,10 @@ export const ContentPanel = observer(() => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
   const pastyService = useService(ServiceNames.PastyService);
+
+  useEffect(() => {
+    pastyService.loadPasty();
+  }, []);
 
   return (
     <div className="content-panel">

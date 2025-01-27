@@ -5,8 +5,8 @@ use entities::pasty::{
 };
 use sea_orm::ActiveValue::Set;
 use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait, QueryFilter,
-    QuerySelect,
+    ActiveModelTrait, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait,
+    QueryFilter, QuerySelect,
 };
 use utils::time::get_now_time;
 
@@ -78,6 +78,14 @@ pub async fn create_pasty(pasty: PastyModel) -> Result<PastyModel, String> {
     active_pasty.updated_at = Set(get_now_time());
     match active_pasty.insert(&conn).await {
         Ok(model) => Ok(model),
+        Err(err) => Err(err.to_string()),
+    }
+}
+
+pub async fn query_all_pasty() -> Result<Vec<PastyModel>, String> {
+    let conn = get_connect();
+    match PastyEntity::find().all(&conn).await {
+        Ok(pasty) => Ok(pasty),
         Err(err) => Err(err.to_string()),
     }
 }

@@ -1,6 +1,6 @@
 export enum StoreNames {
   PastListStore = "PastListStore",
-  Setting = "SettingStore",
+  Configs = "SettingStore",
   PastingUIStore = "PastingUIStore",
   SettingUIStore = "SettingUIStore",
 }

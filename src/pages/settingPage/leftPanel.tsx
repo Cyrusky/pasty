@@ -32,7 +32,7 @@ export const SettingLeftPanel = observer(() => {
           <NavLink to={paths.home} viewTransition>
             <IoArrowBack className="fixed left-5 top-5" />
           </NavLink>
-          <div className="text-center size:25px">Pasty Setting</div>
+          <div className="text-center size:25px">{t("app.pasty_setting")}</div>
         </div>
       </PanelHeader>
       <ul className="menu h-full">

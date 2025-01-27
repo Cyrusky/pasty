@@ -22,7 +22,7 @@ pub async fn get_paged_pasty(
         total: number,
         page: request.page,
         page_size: request.page_size,
-        data: data,
+        data,
         msg: match error_msg == "" {
             true => String::from("OK"),
             false => error_msg,
@@ -32,11 +32,23 @@ pub async fn get_paged_pasty(
 }
 
 #[tauri::command]
-pub async fn clear_pasty() -> Result<ApiResult<u64>, String> {
+pub async fn clear_all_pasty() -> Result<ApiResult<u64>, String> {
     match BizPasty::clear_pasty().await {
         Ok(rows_affected) => Ok(ApiResult {
             status: true,
             data: rows_affected,
+            msg: "OK".to_string(),
+        }),
+        Err(err) => Err(err),
+    }
+}
+
+#[tauri::command]
+pub async fn get_all_pasty() -> Result<ApiResult<Vec<PastyModel>>, String> {
+    match BizPasty::query_all_pasty().await {
+        Ok(pasty) => Ok(ApiResult {
+            status: true,
+            data: pasty,
             msg: "OK".to_string(),
         }),
         Err(err) => Err(err),

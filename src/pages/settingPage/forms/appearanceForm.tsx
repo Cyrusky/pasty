@@ -1,20 +1,23 @@
 import { observer } from "mobx-react";
 import { map } from "lodash-es";
-import { Themes } from "@/libs/constants/settings.ts";
+import { Themes } from "@/libs/constants/configs.ts";
 import { ServiceNames, StoreNames } from "@/libs/constants";
 import { useService } from "@/hooks/useService.ts";
 import clsx from "clsx";
 import { useStore } from "@/hooks";
 import camelcase from "camelcase";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { ConfigKeys } from "@/types";
+import { changeTheme } from "@/libs/utils/dom.ts";
 
 export const AppearanceForm = observer(() => {
   const colors = ["primary", "secondary", "accent", "neutral"];
   const appService = useService(ServiceNames.App);
-  const settingStore = useStore(StoreNames.Setting);
+  const settingStore = useStore(StoreNames.Configs);
 
-  const handleClickTheme = (e: Themes) => {
-    appService.setTheme(e);
+  const handleClickTheme = (theme: Themes) => {
+    appService.setTheme(theme);
+    changeTheme(theme);
   };
 
   return (
@@ -26,10 +29,10 @@ export const AppearanceForm = observer(() => {
             key={key}
             className={clsx(
               "rounded-md cursor-pointer relative border-2 overflow-hidden",
-              settingStore.theme === theme
+              settingStore.configs[ConfigKeys.AppTheme] === theme
                 ? "border-green-500"
                 : "border-base-content/20",
-              { active: settingStore.theme === theme },
+              { active: settingStore.configs[ConfigKeys.AppTheme] === theme },
             )}
             data-act-class="!outline-base-content"
             data-set-theme={theme}
@@ -56,7 +59,7 @@ export const AppearanceForm = observer(() => {
                 </div>
               </div>
             </div>
-            {settingStore.theme === theme && (
+            {settingStore.configs[ConfigKeys.AppTheme] === theme && (
               <FaRegCheckCircle className="absolute right-2 bottom-2 text-green-500" />
             )}
           </div>

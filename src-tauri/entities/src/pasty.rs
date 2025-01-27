@@ -32,4 +32,5 @@ pub enum Pasty {
     Thumbnail,
     Content,
     CreatedAt,
+    UpdatedAt,
 }

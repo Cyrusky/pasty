@@ -1,4 +1,7 @@
 {
+  "app": {
+    "pasty_setting": "Pasty 设置"
+  },
   "settings": {
     "menu": {
       "title": "设置",

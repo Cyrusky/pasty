@@ -1,3 +1,5 @@
+import { ConfigKeys } from "@/types";
+
 export enum Locales {
   en_US = "en_US",
   zh_CN = "zh_CN",
@@ -35,7 +37,7 @@ export enum Themes {
   winter = "winter",
 }
 
-export enum SettingKeys {
-  theme = "theme",
-  locale = "locale",
-}
+export const DefaultConfig: Record<ConfigKeys, string> = {
+  [ConfigKeys.AppTheme]: "light",
+  [ConfigKeys.AppLocal]: "zh_CH",
+};

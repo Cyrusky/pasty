@@ -1,4 +1,4 @@
-import { Themes } from "@/libs/constants/settings.ts";
+import { Themes } from "@/libs/constants/configs.ts";
 import { FC } from "react";
 import camelcase from "camelcase";
 

@@ -18,6 +18,7 @@ impl MigrationTrait for Migration {
                     .col(string(Pasty::Thumbnail).null())
                     .col(string(Pasty::Content))
                     .col(date_time(Pasty::CreatedAt))
+                    .col(date_time(Pasty::UpdatedAt))
                     .to_owned(),
             )
             .await
