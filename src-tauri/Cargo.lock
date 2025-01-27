@@ -868,8 +868,10 @@ checksum = "7e36cc9d416881d2e24f9a963be5fb1cd90966419ac844274161d10488b3e825"
 dependencies = [
  "android-tzdata",
  "iana-time-zone",
+ "js-sys",
  "num-traits",
  "serde",
+ "wasm-bindgen",
  "windows-targets 0.52.6",
 ]
 
@@ -1467,6 +1469,7 @@ checksum = "a3d8a32ae18130a3c84dd492d4215c3d913c3b07c6b63c2eb3eb7ff1101ab7bf"
 name = "entities"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "sea-orm",
  "serde",
 ]
@@ -3642,6 +3645,7 @@ name = "pasty"
 version = "0.1.0"
 dependencies = [
  "arboard",
+ "chrono",
  "entities",
  "log",
  "migration",
@@ -6448,6 +6452,7 @@ name = "utils"
 version = "0.1.0"
 dependencies = [
  "base64 0.22.1",
+ "chrono",
  "dirs 6.0.0",
  "rust-crypto",
  "syntect",

@@ -1,5 +1,5 @@
 use crate::biz::config::{
-    clear_config, delete_config, get_config, query_all_configs, update_config,
+    clear_config, create_or_update_config, delete_config, get_config, query_all_configs,
 };
 use entities::configs::Model as ConfigModel;
 
@@ -19,8 +19,8 @@ pub async fn delete_config_by_key(key: String) -> Result<ConfigModel, String> {
 }
 
 #[tauri::command]
-pub async fn update_config_by_key(key: String, value: String) -> Result<ConfigModel, String> {
-    update_config(key, value).await
+pub async fn add_config(key: String, value: String) -> Result<ConfigModel, String> {
+    create_or_update_config(key, value).await
 }
 
 #[tauri::command]

@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::fmt::Debug;
@@ -10,9 +11,11 @@ pub struct Model {
     #[sea_orm(unique)]
     pub id: Uuid,
     pub pasty_type: String,
+    pub hash: String,
     pub thumbnail: String,
     pub content: String,
-    pub created_at: DateTime,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
@@ -24,6 +27,7 @@ impl ActiveModelBehavior for ActiveModel {}
 pub enum Pasty {
     Table,
     Id,
+    Hash,
     PastyType,
     Thumbnail,
     Content,

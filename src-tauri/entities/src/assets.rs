@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -20,7 +21,7 @@ pub struct Model {
     pub pasty_id: Uuid,
     pub pasty_type: String,
     pub asset_path: String,
-    pub created_at: DateTime,
+    pub created_at: DateTime<Utc>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]

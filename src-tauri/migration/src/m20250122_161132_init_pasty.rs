@@ -13,6 +13,7 @@ impl MigrationTrait for Migration {
                     .table(Pasty::Table)
                     .if_not_exists()
                     .col(pk_uuid(Pasty::Id).not_null())
+                    .col(string(Pasty::Hash).unique_key())
                     .col(string(Pasty::PastyType).not_null())
                     .col(string(Pasty::Thumbnail).null())
                     .col(string(Pasty::Content))

@@ -1,15 +1,15 @@
-use crate::biz::pasty::{query_pasty_by_page, query_pasty_number};
-use crate::biz::types::{PagedResult, PaginationRequest};
+use crate::biz::pasty as BizPasty;
+use crate::biz::types::{ApiResult, PagedApiResult, PaginationRequest};
 use entities::pasty::Model as PastyModel;
 
 #[tauri::command(rename_all = "snake_case")]
 pub async fn get_paged_pasty(
     request: PaginationRequest,
-) -> Result<PagedResult<PastyModel>, String> {
-    let number = query_pasty_number().await.unwrap_or_else(|_| 0);
+) -> Result<PagedApiResult<PastyModel>, String> {
+    let number = BizPasty::query_pasty_number().await.unwrap_or_else(|_| 0);
     let mut error_msg: String = String::from("");
 
-    let data = match query_pasty_by_page(request.page, request.page_size).await {
+    let data = match BizPasty::query_pasty_by_page(request.page, request.page_size).await {
         Ok(result) => result,
         Err(err) => {
             error_msg = err;
@@ -17,7 +17,7 @@ pub async fn get_paged_pasty(
         }
     };
 
-    let result = PagedResult {
+    let result = PagedApiResult {
         status: error_msg == "",
         total: number,
         page: request.page,
@@ -29,4 +29,16 @@ pub async fn get_paged_pasty(
         },
     };
     Ok(result)
+}
+
+#[tauri::command]
+pub async fn clear_pasty() -> Result<ApiResult<u64>, String> {
+    match BizPasty::clear_pasty().await {
+        Ok(rows_affected) => Ok(ApiResult {
+            status: true,
+            data: rows_affected,
+            msg: "OK".to_string(),
+        }),
+        Err(err) => Err(err),
+    }
 }

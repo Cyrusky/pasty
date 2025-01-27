@@ -40,23 +40,42 @@ pub async fn delete_config(key: String) -> Result<ConfigModel, String> {
     }
 }
 
-pub async fn update_config(key: String, value: String) -> Result<ConfigModel, String> {
+async fn update_config(config: ConfigModel, value: String) -> Result<ConfigModel, String> {
+    let conn = get_connect();
+    let mut new_config: ConfigActiveModel = config.into();
+    new_config.value = Set(value);
+    match new_config.update(&conn).await {
+        Ok(config) => Ok(config),
+        Err(err) => Err(err.to_string()),
+    }
+}
+
+async fn create_config(key: String, value: String) -> Result<ConfigModel, String> {
+    let conn = get_connect();
+    let mut config_model: ConfigActiveModel = ConfigActiveModel {
+        id: Default::default(),
+        key: Set(key),
+        value: Set(value),
+    };
+    match config_model.insert(&conn).await {
+        Ok(model) => Ok(model),
+        Err(err) => Err(err.to_string()),
+    }
+}
+
+pub async fn create_or_update_config(key: String, value: String) -> Result<ConfigModel, String> {
     let conn = get_connect();
     match ConfigEntity::find()
         .filter(ConfigColumn::Key.eq(key.clone()))
         .one(&conn)
         .await
     {
-        Ok(config) => {
-            let mut new_config: ConfigActiveModel = config.unwrap().into();
-            new_config.value = Set(value);
-            match new_config.update(&conn).await {
-                Ok(config) => Ok(config),
-                Err(err) => Err(err.to_string()),
-            }
-        }
+        Ok(config) => match config {
+            None => create_config(key, value).await,
+            Some(config) => update_config(config, value).await,
+        },
         Err(_) => Err(format!(
-            "Can not found the config with key: {}",
+            "Can not operate database when finding config key: {}",
             key.clone()
         )),
     }
