@@ -6,11 +6,13 @@ use commands::config::{
     add_config, clear_all_config, delete_config_by_key, get_config_by_key, list_all_config,
 };
 use commands::pasty::{clear_all_pasty, get_all_pasty, get_paged_pasty};
-use tauri::{App, Manager};
+use tauri::{App, Manager, Runtime};
 fn setup(app: &mut App) {
     core::handler::Handle::global().init(app.app_handle());
     core::database::init();
-    core::clipboard::ClipboardWatcher::start();
+    let clipboard = core::clipboard::init().unwrap();
+    clipboard.start_monitor(app.app_handle().clone());
+    app.manage(clipboard);
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -22,7 +24,6 @@ pub fn run() {
         .plugin(tauri_plugin_log::Builder::new().build())
         .setup(|app| {
             setup(app);
-            log::trace!("Setup finished.");
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
