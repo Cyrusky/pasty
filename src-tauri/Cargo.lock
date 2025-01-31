@@ -3660,7 +3660,6 @@ dependencies = [
  "storage",
  "tauri",
  "tauri-build",
- "tauri-plugin-clipboard",
  "tauri-plugin-log",
  "tauri-plugin-opener",
  "tokio",
@@ -5755,21 +5754,6 @@ dependencies = [
  "tauri-utils",
  "toml 0.8.19",
  "walkdir",
-]
-
-[[package]]
-name = "tauri-plugin-clipboard"
-version = "2.1.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f811a26526cad7291414c526be85b2d1317681c60949bbe8c10902898b7c48d7"
-dependencies = [
- "base64 0.22.1",
- "clipboard-rs",
- "image",
- "serde",
- "tauri",
- "tauri-plugin",
- "thiserror 1.0.69",
 ]
 
 [[package]]

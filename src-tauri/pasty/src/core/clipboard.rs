@@ -257,11 +257,13 @@ impl Clipboard {
     }
 
     pub fn start_monitor<R: Runtime>(&self, app_handle: AppHandle<R>) -> Result<(), String> {
-        let _ = app_handle.emit("plugin:clipboard://clipboard-monitor/status", true);
-        let clipboard = ClipboardMonitor::new(app_handle);
+        let _ = app_handle.emit("clipboard-monitor/status", true);
+        let clipboard_monitor = ClipboardMonitor::new(app_handle);
         let mut watcher: ClipboardWatcherContext<ClipboardMonitor<R>> =
             ClipboardWatcherContext::new().unwrap();
-        let watcher_shutdown = watcher.add_handler(clipboard).get_shutdown_channel();
+        let watcher_shutdown = watcher
+            .add_handler(clipboard_monitor)
+            .get_shutdown_channel();
         let mut watcher_shutdown_state = self.watcher_shutdown.lock().unwrap();
         if (*watcher_shutdown_state).is_some() {
             return Ok(());
@@ -274,7 +276,7 @@ impl Clipboard {
     }
 
     pub fn stop_monitor<R: Runtime>(&self, app_handle: AppHandle<R>) -> Result<(), String> {
-        let _ = app_handle.emit("plugin:clipboard://clipboard-monitor/status", false);
+        let _ = app_handle.emit("clipboard-monitor/status", false);
         let mut watcher_shutdown_state = self.watcher_shutdown.lock().unwrap();
         if let Some(watcher_shutdown) = (*watcher_shutdown_state).take() {
             watcher_shutdown.stop();
@@ -308,9 +310,8 @@ where
     R: Runtime,
 {
     fn on_clipboard_change(&mut self) {
-        let _ = self.app_handle.emit(
-            "plugin:clipboard://clipboard-monitor/update",
-            "clipboard update",
-        );
+        let _ = self
+            .app_handle
+            .emit("clipboard-monitor/update", "clipboard update");
     }
 }
