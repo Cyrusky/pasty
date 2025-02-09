@@ -1,4 +1,4 @@
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { useEffect } from "react";

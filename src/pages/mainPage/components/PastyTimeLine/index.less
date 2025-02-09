@@ -1,0 +1,29 @@
+.timeline-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px 5px 0 0;
+}
+
+@var-dot-left: 140px;
+
+.timeline {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  --dot-left: @var-dot-left;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(@var-dot-left - 1px);
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom,
+    rgba(144, 156, 173, 0.38) 60%,
+    rgba(255, 255, 255, 0) 0%);
+    background-position: left;
+    background-size: 1px 5px;
+    background-repeat: repeat-y;
+  }
+}

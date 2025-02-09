@@ -1,0 +1,93 @@
+
+.timeline-item {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  width: 100%;
+  margin-top: 15px;
+  min-height: 80px;
+
+  &:hover {
+    .timeline-dot {
+      width: calc(var(--dot-size) + 3px);
+      height: calc(var(--dot-size) + 3px);
+      background-color: var(--color-primary-1);
+      box-shadow: 0 0 calc((var(--dot-size) - 2px) / 2) var(--color-primary-2);
+      border: 1px solid var(--color-primary-bg);
+      margin-left: calc((var(--dot-size) + 3px) / -2);
+    }
+
+    .time {
+      color: var(--color-text-primary);
+    }
+    .number {
+      background-color: var(--color-primary-2);
+      box-shadow: 0 0 calc((var(--dot-size) - 2px) / 2) var(--color-primary-2);
+    }
+  }
+}
+
+
+.timeline-left {
+  display: flex;
+  width: calc(var(--dot-left) - (var(--dot-size) + 30px) / 2);
+  position: absolute;
+  color: #8492a5;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  transition: var(--default-transition);
+
+  .number {
+    width: fit-content;
+    min-width: 20px;
+    height: fit-content;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: 2px 5px;
+    color: var(--color-primary-bg);
+    margin-left: 5px;
+    text-align: center;
+    box-shadow: 0 0 calc((var(--dot-size) - 2px) / 2) var(--color-gray-1);
+    background-color: var(--color-gray-2);
+  }
+
+  .time {
+    text-align: right;
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 4px;
+
+    .hms {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .ymd {
+      font-size: 10px;
+    }
+  }
+}
+
+.timeline-right {
+  position: relative;
+  margin-left: calc(var(--dot-left) + 15px);
+  width: calc(100% - var(--dot-left));
+  max-width: calc((var(--full-width) / 2) - var(--dot-left) - var(--dot-size));
+  border-radius: 5px;
+ }
+
+.timeline-dot {
+  left: calc(var(--dot-left) - 1px);
+  width: var(--dot-size);
+  height: var(--dot-size);
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #d8d8d8;
+  background: white;
+  text-align: center;
+  top: 1px;
+  line-height: 40px;
+  margin-left: calc(var(--dot-size) / -2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}

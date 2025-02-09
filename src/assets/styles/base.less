@@ -11,9 +11,16 @@
 @color-secondary-5: #2f54eb;
 @color-primary-bg: #f0f2f5;
 @color-secondary-bg: #ffffff;
+@color-secondary-bg-1: rgba(188, 188, 188, 0.1);
 @color-text-primary: #000000;
 @color-text-secondary: #ffffff;
+@color-gray-1: rgba(78, 78, 78, 1);
+@color-gray-2: rgba(78, 78, 78, 0.53);
+
+// Default
 @default-font-size: 12px;
+@default-code-font-size: 10px;
+@default-transition: all 0.3s ease;
 
 // Global
 @var-border-radius: 15px;
@@ -31,6 +38,9 @@
 
 // Main Page
 @var-main-page-bg: @color-secondary-bg;
+
+// Special
+@var-dot-size: 20px;
 
 :root {
   --border-radius: @var-border-radius;
@@ -56,6 +66,12 @@
   --color-secondary-5: @color-secondary-5;
   --color-primary-bg: @color-primary-bg;
   --color-secondary-bg: @color-secondary-bg;
+  --color-secondary-bg-1: @color-secondary-bg-1;
+  --color-gray-1: @color-gray-1;
+  --color-gray-2: @color-gray-2;
   --default-font-size: @default-font-size;
+  --default-code-font-size: @default-code-font-size;
+  --default-transition: @default-transition;
+  --dot-size: @var-dot-size;
 }
 

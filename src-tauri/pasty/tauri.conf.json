@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "identifier": "cn.borgor.pasty",
   "build": {
-    "beforeDevCommand": "pnpm dev:web",
+    "beforeDevCommand": "pnpm dev:rust",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "pnpm build",
     "frontendDist": "../../dist"

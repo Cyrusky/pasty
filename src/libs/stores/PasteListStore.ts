@@ -5,6 +5,7 @@ import type { PastyModel } from "@/types";
 @injectable()
 export class PasteListStore {
   pasty: PastyModel[] = [];
+  selectedPasty: PastyModel | undefined = undefined;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -12,5 +13,13 @@ export class PasteListStore {
 
   loadPasty(data: PastyModel[]) {
     this.pasty = data;
+  }
+
+  setSelectPasty(pasty: PastyModel) {
+    this.selectedPasty = pasty;
+  }
+
+  clearSelectPasty() {
+    this.selectedPasty = undefined;
   }
 }

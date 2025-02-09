@@ -1,6 +1,20 @@
 import "./PageContainer.less";
-import { FC, PropsWithChildren } from "react";
+import { CSSProperties, FC, PropsWithChildren } from "react";
+import clsx from "clsx";
 
-export const PageContainer: FC<PropsWithChildren> = ({ children }) => {
-  return <section className="page-container">{children}</section>;
+interface PageContainerProps extends PropsWithChildren {
+  style?: CSSProperties;
+  className?: string;
+}
+
+export const PageContainer: FC<PageContainerProps> = ({
+  children,
+  style,
+  className,
+}) => {
+  return (
+    <section className={clsx(["page-container", className])} style={style}>
+      {children}
+    </section>
+  );
 };
