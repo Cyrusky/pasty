@@ -21,6 +21,7 @@
     padding: 0 20px;
     align-items: center;
     user-select: none;
+    cursor: default;
     position: relative;
     border-top-left-radius: var(--title-bar-tab-roundness);
     border-top-right-radius: var(--title-bar-tab-roundness);
@@ -41,6 +42,8 @@
     box-shadow:
             calc(var(--title-bar-tab-roundness) * 1.666666667) calc(var(--title-bar-tab-roundness) * 1.75) 0 0 var(--title-bar-tab-bg-active),
             calc(var(--title-bar-tab-roundness) * -1.666666667) calc(var(--title-bar-tab-roundness) * 1.75) 0 0 var(--title-bar-tab-bg-active);
+    font-weight: bold;
+    font-size: calc(var(--default-font-size) + 2px);
 
     &::before {
       content: '';

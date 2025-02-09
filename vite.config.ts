@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 import react from "@vitejs/plugin-react";
 import * as path from "node:path";
+import autoprefixer from "autoprefixer";
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -15,12 +16,17 @@ export default defineConfig(async () => ({
     },
   },
   css: {
+    postcss: {
+      plugins: [autoprefixer],
+    },
     preprocessorOptions: {
       less: {
+        math: "always",
         javascriptEnabled: true,
         additionalData: `@import "${path.resolve(__dirname, "src/assets/styles/base.less")}";`,
       },
     },
+    devSourcemap: true,
   },
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   esbuild: {

@@ -1,19 +1,36 @@
+// Colors
+@color-primary-1: #f5222d;
+@color-primary-2: #fa541c;
+@color-primary-3: #fa8c16;
+@color-primary-4: #fadb14;
+@color-primary-5: #a0d911;
+@color-secondary-1: #a0d911;
+@color-secondary-2: #52c41a;
+@color-secondary-3: #13c2c2;
+@color-secondary-4: #1890ff;
+@color-secondary-5: #2f54eb;
+@color-primary-bg: #f0f2f5;
+@color-secondary-bg: #ffffff;
+@color-text-primary: #000000;
+@color-text-secondary: #ffffff;
+@default-font-size: 12px;
+
 // Global
-@var-border-radius: 5px;
+@var-border-radius: 15px;
 
 // Window
 @var-full-width: 1000px;
 @var-full-height: 650px;
 
 // Title bars
-@var-title-bar-bg: rgba(152, 50, 50);
+@var-title-bar-bg: @color-primary-bg;
 @var-title-bar-height: 42px;
-@var-title-bar-tab-bg: @var-title-bar-bg;
-@var-title-bar-tab-bg-active: @var-main-page-bg;
+@var-title-bar-tab-bg: @color-primary-bg;
+@var-title-bar-tab-bg-active: @color-secondary-bg;
 @var-title-bar-tab-roundness: 12px;
 
 // Main Page
-@var-main-page-bg: rgba(101, 101, 101);
+@var-main-page-bg: @color-secondary-bg;
 
 :root {
   --border-radius: @var-border-radius;
@@ -25,21 +42,20 @@
   --title-bar-tab-bg: @var-title-bar-tab-bg;
   --title-bar-tab-bg-active: @var-title-bar-tab-bg-active;
   --title-bar-tab-roundness: @var-title-bar-tab-roundness;
+  --color-text-primary: @color-text-primary;
+  --color-text-secondary: @color-text-secondary;
+  --color-primary-1: @color-primary-1;
+  --color-primary-2: @color-primary-2;
+  --color-primary-3: @color-primary-3;
+  --color-primary-4: @color-primary-4;
+  --color-primary-5: @color-primary-5;
+  --color-secondary-1: @color-secondary-1;
+  --color-secondary-2: @color-secondary-2;
+  --color-secondary-3: @color-secondary-3;
+  --color-secondary-4: @color-secondary-4;
+  --color-secondary-5: @color-secondary-5;
+  --color-primary-bg: @color-primary-bg;
+  --color-secondary-bg: @color-secondary-bg;
+  --default-font-size: @default-font-size;
 }
 
-body {
-  background-color: #5bbec3;
-}
-
-.full-w {
-  width: @var-full-width;
-}
-
-.full-h {
-  height: @var-full-height;
-}
-
-.full:extend(.full-w all, .full-h all) {
-}
-
-;

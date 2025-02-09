@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+
+html {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: var(--full-width);
+  height: var(--full-height);
+  background: transparent !important;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  color: var(--color-text-primary);
+  font-size: var(--default-font-size);
+}
+
+.full-w {
+  width: var(--full-width);
+}
+
+.full-h {
+  height: var(--full-height);
+}
+
+.full:extend(.full-w all, .full-h all) {
+}
+
+.global-container {
+  background-color: var(--main-page-bg);
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 0;
+}
+
+

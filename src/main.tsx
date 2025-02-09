@@ -1,6 +1,6 @@
 import "normalize.css";
 import "reflect-metadata";
-import "./main.css";
+import "./main.less";
 import "./i18n";
 import { BrowserRouter } from "react-router";
 
@@ -10,17 +10,16 @@ import { ContextProvider } from "@/libs/components/providers/ContextProvider.tsx
 import { Router } from "@/router";
 import { Initiator } from "@/libs/components/initiators";
 import { TitleBar } from "@/libs/components/TitleBar";
-import { GlobalContainer } from "./libs/components/styledComponent";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <ContextProvider>
-        <GlobalContainer>
+        <div className="global-container">
           <Initiator />
           <TitleBar />
           <Router />
-        </GlobalContainer>
+        </div>
       </ContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

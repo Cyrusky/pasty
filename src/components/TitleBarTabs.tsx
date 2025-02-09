@@ -1,4 +1,4 @@
-import "./Tab.less";
+import "./TitleBarTabs.less";
 import { FC, ReactNode, useState } from "react";
 import clsx from "clsx";
 
