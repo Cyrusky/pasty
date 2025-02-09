@@ -4,10 +4,7 @@ use entities::pasty::{
     Model as PastyModel,
 };
 use sea_orm::ActiveValue::Set;
-use sea_orm::{
-    ActiveModelTrait, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait,
-    QueryFilter, QuerySelect,
-};
+use sea_orm::{ActiveModelTrait, ActiveValue, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait, QueryFilter, QueryOrder, QuerySelect};
 use utils::time::get_now_time;
 
 pub async fn query_pasty_by_page(page: u64, page_size: u64) -> Result<Vec<PastyModel>, String> {
@@ -39,23 +36,6 @@ pub async fn clear_pasty() -> Result<u64, String> {
     }
 }
 
-pub async fn renew_pasty_time(hash: String) -> Result<PastyModel, String> {
-    let conn = get_connect();
-    let now = get_now_time();
-
-    match get_pasty_by_hash(hash).await {
-        Ok(pasty) => {
-            let mut new_pasty: PastyActiveModel = pasty.into();
-            new_pasty.updated_at = Set(now);
-            match new_pasty.update(&conn).await {
-                Ok(model) => Ok(model),
-                Err(err) => Err(err.to_string()),
-            }
-        }
-        Err(err) => Err(err),
-    }
-}
-
 pub async fn get_pasty_by_hash(hash: String) -> Result<PastyModel, String> {
     let conn = get_connect();
     match PastyEntity::find()
@@ -73,10 +53,12 @@ pub async fn get_pasty_by_hash(hash: String) -> Result<PastyModel, String> {
 
 pub async fn create_pasty(pasty: PastyModel) -> Result<PastyModel, String> {
     let conn = get_connect();
-    let mut active_pasty: PastyActiveModel = pasty.into_active_model();
-    active_pasty.created_at = Set(get_now_time());
-    active_pasty.updated_at = Set(get_now_time());
-    match active_pasty.insert(&conn).await {
+    let mut active_model: PastyActiveModel = pasty.into_active_model();
+    // Set the ID to "NotSet" to make sure the field using auto_increment
+    active_model.id = ActiveValue::NotSet;
+    active_model.created_at = Set(get_now_time());
+    active_model.updated_at = Set(get_now_time());
+    match active_model.insert(&conn).await {
         Ok(model) => Ok(model),
         Err(err) => Err(err.to_string()),
     }
@@ -84,8 +66,51 @@ pub async fn create_pasty(pasty: PastyModel) -> Result<PastyModel, String> {
 
 pub async fn query_all_pasty() -> Result<Vec<PastyModel>, String> {
     let conn = get_connect();
-    match PastyEntity::find().all(&conn).await {
+    match PastyEntity::find().order_by_desc(PastyColumn::UpdatedAt).all(&conn).await {
         Ok(pasty) => Ok(pasty),
         Err(err) => Err(err.to_string()),
+    }
+}
+
+pub async fn remove_old_pasty_by_number(num: u64) -> Result<bool, String> {
+    let conn = get_connect();
+    match PastyEntity::find()
+        .order_by_desc(PastyColumn::UpdatedAt)
+        .offset(num - 1)
+        .one(&conn)
+        .await
+    {
+        Ok(pasty) => match pasty {
+            None => Ok(true),
+            Some(pasty) => {
+                PastyEntity::delete_many()
+                    .filter(PastyColumn::UpdatedAt.lte(pasty.updated_at))
+                    .exec(&conn)
+                    .await
+                    .unwrap();
+                Ok(true)
+            }
+        },
+        Err(err) => Err(err.to_string()),
+    }
+}
+
+pub async fn try_update_pasty_by_hash(hash: &String) -> bool {
+    let conn = get_connect();
+    let pasty = PastyEntity::find()
+        .filter(PastyColumn::Hash.eq(hash))
+        .one(&conn)
+        .await
+        .unwrap_or(None);
+    match pasty {
+        None => false,
+        Some(pasty) => {
+            let mut pasty_active_model: PastyActiveModel = pasty.into_active_model();
+            pasty_active_model.updated_at = Set(get_now_time());
+            match pasty_active_model.update(&conn).await {
+                Ok(_) => true,
+                Err(_) => false,
+            }
+        }
     }
 }

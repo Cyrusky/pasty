@@ -29,13 +29,15 @@ export interface ConfigModel {
 }
 
 export enum PastyType {
-  text,
-  image,
-  html,
+  Text = "Text",
+  Html = "Html",
+  Rtf = "Rtf",
+  Image = "Image",
+  File = "File",
 }
 
 export interface PastyModel {
-  id: string;
+  id: number;
   pastyType: PastyType;
   hash: string;
   thumbnail: string;
@@ -45,7 +47,7 @@ export interface PastyModel {
 }
 
 export interface AssetModel {
-  id: string;
+  id: number;
   pastyId: string;
   pastyType: string;
   assetPath: string;

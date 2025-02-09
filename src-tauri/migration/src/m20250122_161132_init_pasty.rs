@@ -12,7 +12,7 @@ impl MigrationTrait for Migration {
                 Table::create()
                     .table(Pasty::Table)
                     .if_not_exists()
-                    .col(pk_uuid(Pasty::Id).not_null())
+                    .col(integer(Pasty::Id).not_null().unsigned().auto_increment().primary_key())
                     .col(string(Pasty::Hash).unique_key())
                     .col(string(Pasty::PastyType).not_null())
                     .col(string(Pasty::Thumbnail).null())

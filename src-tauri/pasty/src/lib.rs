@@ -7,9 +7,11 @@ use commands::config::{
 };
 use commands::pasty::{clear_all_pasty, get_all_pasty, get_paged_pasty};
 use tauri::{App, Manager};
+
 fn setup(app: &mut App) {
     core::handler::Handle::global().init(app.app_handle());
     core::database::init();
+
     let clipboard = core::clipboard::init().unwrap();
     clipboard
         .start_monitor(app.app_handle().clone())

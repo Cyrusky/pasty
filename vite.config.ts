@@ -1,20 +1,28 @@
-import tailwindcss from "tailwindcss";
-import autoprefixer from "autoprefixer";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
 import react from "@vitejs/plugin-react";
+import * as path from "node:path";
 
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react(), tsconfigPaths()],
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
+  define: {
+    "process.env": {
+      NODE_ENV: process.env.NODE_ENV,
     },
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${path.resolve(__dirname, "src/assets/styles/base.less")}";`,
+      },
+    },
+  },
+  plugins: [react(), tsconfigPaths(), tailwindcss()],
   esbuild: {
     target: "es2022",
     tsconfigRaw: {
@@ -25,6 +33,7 @@ export default defineConfig(async () => ({
   },
   clearScreen: false,
   server: {
+    open: process.env.NODE_ENV === "development-web",
     port: 1420,
     strictPort: true,
     host: host || false,

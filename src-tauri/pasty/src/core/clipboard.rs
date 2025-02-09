@@ -1,3 +1,7 @@
+use crate::core::clipboard_handlers::{
+    handle_file_content, handle_html_content, handle_image_content, handle_rtf_content,
+    handle_text_content, remove_pasty_overflow,
+};
 use base64::engine::{general_purpose, Engine as _};
 use clipboard_rs::common::RustImage;
 use clipboard_rs::{
@@ -8,8 +12,10 @@ use clipboard_rs::{
 use image::EncodableLayout;
 use serde::{Deserialize, Serialize};
 use std::sync::{Arc, Mutex};
-use tauri::{AppHandle, Emitter, Runtime};
+use tauri::{AppHandle, Emitter, Manager, Runtime};
+use tokio::runtime::Builder;
 
+#[derive(Clone)]
 pub struct Clipboard {
     pub clipboard: Arc<Mutex<ClipboardRsContext>>,
     pub watcher_shutdown: Arc<Mutex<Option<WatcherShutdown>>>,
@@ -310,6 +316,29 @@ where
     R: Runtime,
 {
     fn on_clipboard_change(&mut self) {
+        let clipboard = self.app_handle.state::<Clipboard>();
+        let runtime = Builder::new_multi_thread()
+            .worker_threads(1)
+            .enable_all()
+            .build()
+            .unwrap();
+        match clipboard.available_types() {
+            Ok(available_types) => {
+                runtime.block_on(remove_pasty_overflow());
+                if available_types.rtf {
+                    runtime.block_on(handle_rtf_content(clipboard.read_rtf().unwrap()))
+                } else if available_types.html {
+                    runtime.block_on(handle_html_content(clipboard.read_html().unwrap()))
+                } else if available_types.text {
+                    runtime.block_on(handle_text_content(clipboard.read_text().unwrap()))
+                } else if available_types.image {
+                    runtime.block_on(handle_image_content(clipboard.read_image_base64().unwrap()))
+                } else if available_types.files {
+                    runtime.block_on(handle_file_content(clipboard.read_files().unwrap()))
+                }
+            }
+            Err(_) => {}
+        };
         let _ = self
             .app_handle
             .emit("clipboard-monitor/update", "clipboard update");

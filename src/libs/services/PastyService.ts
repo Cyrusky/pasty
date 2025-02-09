@@ -18,6 +18,7 @@ export class PastyService {
   }
 
   async loadPasty() {
-    await this.apiService.getAllPasty();
+    const result = await this.apiService.getAllPasty();
+    this.pastListStore.loadPasty(result.data);
   }
 }

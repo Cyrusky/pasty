@@ -7,10 +7,10 @@ use std::fmt::Debug;
 #[sea_orm(table_name = "pasty")]
 #[serde(rename_all = "camelCase")]
 pub struct Model {
-    #[sea_orm(primary_key)]
-    #[sea_orm(unique)]
-    pub id: Uuid,
+    #[sea_orm(primary_key, auto_increment = true)]
+    pub id: u32,
     pub pasty_type: String,
+    #[sea_orm(unique)]
     pub hash: String,
     pub thumbnail: String,
     pub content: String,

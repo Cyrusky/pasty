@@ -9,4 +9,8 @@ export class PasteListStore {
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
+
+  loadPasty(data: PastyModel[]) {
+    this.pasty = data;
+  }
 }

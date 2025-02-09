@@ -50,9 +50,3 @@ pub fn highlight(key: &str, content: &str) -> String {
 fn escape_html(html: &str) -> String {
     html.replace("<", "&lt;").replace(">", "&gt;")
 }
-
-#[test]
-fn test_highlight() {
-    let res = highlight("hello", "hello worldhello");
-    println!("{}", res);
-}

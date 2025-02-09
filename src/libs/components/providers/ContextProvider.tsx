@@ -1,16 +1,16 @@
-import { IApiType, IServiceType, IStoreType } from "@/types";
-import { ApiNames, ServiceNames, StoreNames } from "@/libs/constants";
+import { IServiceType, IStoreType } from "@/types";
+import { ServiceNames, StoreNames } from "@/libs/constants";
 import { IOC } from "@/libs/container";
-import { ApiContext, ServiceContext, StoreContext } from "@/hooks/providers.ts";
+import { ServiceContext, StoreContext } from "@/hooks/providers.ts";
 import { FC, PropsWithChildren } from "react";
 import { PastyService } from "@/libs/services/PastyService.ts";
-import { DatabaseApi } from "@/libs/apis/DatabaseApi.ts";
 import { PasteListStore } from "@/libs/stores/PasteListStore.ts";
 import { AppService } from "@/libs/services/AppService.ts";
 import { ConfigService } from "@/libs/services/ConfigService.ts";
 import { ConfigStore } from "@/libs/stores/ConfigStore.ts";
 import { SettingUIStore } from "@/libs/stores/SettingUIStore.ts";
 import { PastingUIStore } from "@/libs/stores/PastingUIStore.ts";
+import { ApiService } from "@/libs/services/ApiService.ts";
 
 export const Services: IServiceType = {
   get [ServiceNames.PastyService]() {
@@ -22,11 +22,8 @@ export const Services: IServiceType = {
   get [ServiceNames.Setting]() {
     return IOC.get<ConfigService>(ServiceNames.Setting);
   },
-};
-
-export const Apis: IApiType = {
-  get [ApiNames.Database]() {
-    return IOC.get<DatabaseApi>(ApiNames.Database);
+  get [ServiceNames.ApiService]() {
+    return IOC.get<ApiService>(ServiceNames.ApiService);
   },
 };
 
@@ -48,9 +45,7 @@ export const Stores: IStoreType = {
 export const ContextProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ServiceContext.Provider value={Services}>
-      <StoreContext.Provider value={Stores}>
-        <ApiContext.Provider value={Apis}>{children}</ApiContext.Provider>
-      </StoreContext.Provider>
+      <StoreContext.Provider value={Stores}>{children}</StoreContext.Provider>
     </ServiceContext.Provider>
   );
 };

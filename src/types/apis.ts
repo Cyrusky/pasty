@@ -35,7 +35,7 @@ export interface IApiService {
 
   clearAllConfig(): Promise<number>;
 
-  getAllPasty(): Promise<ApiResult<PastyModel>>;
+  getAllPasty(): Promise<ApiResult<PastyModel[]>>;
 
   getPagedPasty(request: PagedRequest): Promise<PagedApiResult<PastyModel>>;
 

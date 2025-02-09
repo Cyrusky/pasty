@@ -10,15 +10,20 @@
     "frontendDist": "../../dist"
   },
   "app": {
+    "macOSPrivateApi": true,
     "windows": [
       {
         "title": "pasty",
-        "width": 800,
-        "height": 630,
+        "width": 1000,
+        "height": 650,
         "center": true,
         "fullscreen": false,
         "resizable": false,
-        "alwaysOnTop": true
+        "alwaysOnTop": false,
+        "decorations": false,
+        "transparent": true,
+        "shadow": true,
+        "dragDropEnabled": false
       }
     ],
     "security": {

@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
 
 html {
     display: flex;
@@ -16,9 +15,8 @@ html {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    height: 600px;
-    background: transparent !important;
-    border-radius: 5px;
+    width: 1000px;
+    height: 650px;
+    background: rebeccapurple !important;    border-radius: 5px;
     overflow: hidden;
 }
