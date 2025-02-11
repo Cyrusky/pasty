@@ -42,6 +42,7 @@ export interface PastyModel {
   hash: string;
   thumbnail: string;
   content: string;
+  pined: boolean;
   createdAt: string;
   updatedAt: string;
 }

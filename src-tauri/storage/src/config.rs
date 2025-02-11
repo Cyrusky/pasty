@@ -10,6 +10,7 @@ impl ConfigStore {
         db: &DbConn,
         key: &str,
     ) -> Result<Option<configs::Model>, DbErr> {
+        println!("Call Api get_config_by_key");
         configs::Entity::find()
             .filter(configs::Column::Key.eq(key))
             .one(db)
@@ -21,6 +22,7 @@ impl ConfigStore {
         key: &str,
         value: &str,
     ) -> Result<configs::ActiveModel, DbErr> {
+        println!("Call Api set_config");
         let config = ConfigStore::get_config_by_key(db, key).await?;
         let mut config: configs::ActiveModel = match config {
             Some(config) => config.into(),
@@ -42,6 +44,7 @@ impl ConfigStore {
     }
 
     pub async fn list_all_configs(db: &DbConn) -> Result<Vec<configs::Model>, DbErr> {
+        println!("Call Api list_all_configs");
         configs::Entity::find().all(db).await
     }
 }

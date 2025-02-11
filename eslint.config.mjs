@@ -11,5 +11,13 @@ export default tsEslint.config({
   },
   rules: {
     "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_", // 忽略以 _ 开头的参数
+        varsIgnorePattern: "^_", // 忽略以 _ 开头的变量
+        caughtErrorsIgnorePattern: "^_", // 忽略以 _ 开头的 catch 参数
+      },
+    ],
   },
 });

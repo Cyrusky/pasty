@@ -9,9 +9,7 @@ export const Locales = observer(() => {
   const settingStore = useStore(StoreNames.Configs);
   const { i18n } = useTranslation();
   useEffect(() => {
-    i18n
-      .changeLanguage(settingStore.configs[ConfigKeys.AppLocal])
-      .then(() => {});
-  }, [settingStore.configs[ConfigKeys.AppLocal]]);
+    i18n.changeLanguage(settingStore[ConfigKeys.AppLocal]).then(() => {});
+  }, [settingStore[ConfigKeys.AppLocal]]);
   return <></>;
 });

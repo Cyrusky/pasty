@@ -1,20 +1,14 @@
-import { FC } from "react";
-import { RenderProps } from "@/types/props.ts";
-// @ts-ignore
-import Highlight from "react-highlight";
+.image-render-box {
+  padding: 0 30px 0 0;
+  .image-thumbnail {
+    transition: scale 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 8px rgba(from var(--color-accent) r g b / 0.1);
+  }
 
-export const ImageRender: FC<RenderProps> = ({ pasty }) => {
-  return (
-    <div className="pasty-timeline-box">
-      <img className={"image-thumbnail"} src={pasty.content} />
-    </div>
-  );
-};
-
-export const ImagePreviewRender: FC<RenderProps> = ({ pasty }) => {
-  return (
-    <div className="pasty-preview-render pasty-preview-render-text">
-      <img className={"image"} src={pasty.content} />
-    </div>
-  );
-};
+  &:hover {
+    .image-thumbnail {
+      scale: 1.02;
+    }
+  }
+}

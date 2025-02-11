@@ -22,7 +22,7 @@ html {
   background: transparent !important;
   border-radius: var(--border-radius);
   overflow: hidden;
-  color: var(--color-text-primary);
+  color: var(--color-base-content);
   font-size: var(--default-font-size);
 }
 
@@ -34,7 +34,9 @@ html {
   height: var(--full-height);
 }
 
-.full:extend(.full-w all, .full-h all) {
+.full {
+  height: var(--full-height);
+  width: var(--full-width);
 }
 
 .global-container {
@@ -48,5 +50,3 @@ html {
   flex-flow: column nowrap;
   row-gap: 0;
 }
-
-

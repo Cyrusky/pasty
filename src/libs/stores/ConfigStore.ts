@@ -4,6 +4,8 @@ import { makeAutoObservable } from "mobx";
 import { DefaultConfig } from "@/libs/constants/configs.ts";
 import type { ConfigModel } from "@/types";
 import { ConfigKeys } from "@/types";
+import { isWebDev } from "@/libs/utils/env.ts";
+import { CONFIG_NAME, RustStorageAdapter } from "@/libs/stores/StoreAdapter.ts";
 
 @injectable()
 export class ConfigStore {
@@ -15,12 +17,10 @@ export class ConfigStore {
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
     makePersistable(this, {
-      name: "configStore",
+      name: CONFIG_NAME,
       properties: ["configs"],
-      storage: window.localStorage,
-    }).then((...args) => {
-      console.log("makePersistable", ...args);
-    });
+      storage: isWebDev ? localStorage : RustStorageAdapter,
+    }).then();
   }
 
   loadConfig(configs: ConfigModel[]) {

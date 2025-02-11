@@ -1,69 +1,28 @@
-import "./PastyTimeLineItem.less";
+import "./PastyItemIcons.less";
+import { FC } from "react";
+import { PastyModel } from "@/types";
+import { MdDeleteOutline, MdOutlineContentCopy } from "react-icons/md";
+import { FaRegPaste } from "react-icons/fa6";
+import { TiPinOutline } from "react-icons/ti";
 import clsx from "clsx";
-import { FC, useEffect, useState } from "react";
-import dayjs from "dayjs";
-import { PastyModel, PastyType } from "@/types";
-import { TextRender } from "@/pages/mainPage/components/contentRender/textRender.tsx";
 
-interface TimeLineItemProps {
-  index: number;
+interface PastyItemIconsProps {
   pasty: PastyModel;
-  onClick: (pasty: PastyModel) => void;
 }
-export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
-  index,
-  pasty,
-  onClick,
-}) => {
-  const current = Math.random() > 0.5;
-  const [hms, setHms] = useState("");
-  const [ymd, setYmd] = useState("");
 
-  useEffect(() => {
-    const now = new Date();
-    const updatedAt = new Date(pasty.updatedAt);
-    const time = dayjs(updatedAt);
-
-    if (now.getTime() - updatedAt.getTime() < 1000 * 60 * 60 * 24) {
-      setHms(time.fromNow());
-    } else {
-      setHms(time.format("HH:mm:ss"));
-    }
-    setYmd(time.format("YYYY-MM-DD"));
-  }, []);
-
-  const getRender = (pasty: PastyModel) => {
-    switch (pasty.pastyType) {
-      case PastyType.Text:
-        return <TextRender pasty={pasty} />;
-      default:
-        return <div></div>;
-    }
-  };
-
+const iconSize = 30;
+export const PastyItemIcons: FC<PastyItemIconsProps> = ({ pasty }) => {
   return (
-    <div
-      className="timeline-item"
-      onClick={() => {
-        onClick(pasty);
-      }}
-    >
-      <div className="timeline-left">
-        <div className="number">{index + 1}</div>
-        <div className="time">
-          <div className="hms">{hms}</div>
-          <div className="ymd">{ymd}</div>
-        </div>
-      </div>
-      <div
-        className={clsx("timeline-dot", {
-          "timeline-dot-current": current,
+    <div className="render-tool-bar">
+      <MdOutlineContentCopy size={iconSize / 2} className={"icons"} />
+      <FaRegPaste size={iconSize / 2} className={"icons"} />
+      <MdDeleteOutline size={iconSize / 2} className={"icons"} />
+      <TiPinOutline
+        size={iconSize / 2}
+        className={clsx("icons", {
+          "icons-active": pasty.pined,
         })}
       />
-      <div className="timeline-right">
-        <div className={"pasty-render"}>{getRender(pasty)}</div>
-        <div className="render-tool-bar">123</div>
-      </div>
     </div>
   );
 };

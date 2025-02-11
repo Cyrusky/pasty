@@ -2,8 +2,14 @@ import "./PastyTimeLineItem.less";
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { PastyModel, PastyType } from "@/types";
+import { ConfigKeys, PastyModel, PastyType } from "@/types";
 import { TextRender } from "@/pages/mainPage/components/contentRender/textRender.tsx";
+import { PastyItemIcons } from "@/pages/mainPage/components/PastyTimeLine/PastyItemIcons.tsx";
+import { ImageRender } from "@/pages/mainPage/components/contentRender/imageRender.tsx";
+import { RtfRender } from "@/pages/mainPage/components/contentRender/rtfRender.tsx";
+import { useStore } from "@/hooks";
+import { StoreNames } from "@/libs/constants";
+import { Locales } from "@/libs/constants/configs.ts";
 
 interface TimeLineItemProps {
   index: number;
@@ -15,9 +21,24 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
   pasty,
   onClick,
 }) => {
+  const configStore = useStore(StoreNames.Configs);
   const current = Math.random() > 0.5;
   const [hms, setHms] = useState("");
   const [ymd, setYmd] = useState("");
+
+  const testConfig = () => {
+    if (configStore.getConfigByKey(ConfigKeys.AppLocal) === Locales.zh_CN) {
+      configStore.updateConfig({
+        key: ConfigKeys.AppLocal,
+        value: Locales.en_US,
+      });
+    } else {
+      configStore.updateConfig({
+        key: ConfigKeys.AppLocal,
+        value: Locales.zh_CN,
+      });
+    }
+  };
 
   useEffect(() => {
     const now = new Date();
@@ -36,6 +57,10 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
     switch (pasty.pastyType) {
       case PastyType.Text:
         return <TextRender pasty={pasty} />;
+      case PastyType.Image:
+        return <ImageRender pasty={pasty} />;
+      case PastyType.Rtf:
+        return <RtfRender pasty={pasty} />;
       default:
         return <div></div>;
     }
@@ -59,10 +84,11 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
         className={clsx("timeline-dot", {
           "timeline-dot-current": current,
         })}
+        onClick={testConfig}
       />
       <div className="timeline-right">
         <div className={"pasty-render"}>{getRender(pasty)}</div>
-        <div className="render-tool-bar">123</div>
+        <PastyItemIcons pasty={pasty} />
       </div>
     </div>
   );

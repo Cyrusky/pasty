@@ -5,7 +5,9 @@ import Highlight from "react-highlight";
 
 export const TextRender: FC<RenderProps> = ({ pasty }) => {
   return (
-    <div className="pasty-render-text">{pasty.content.substring(0, 100)}</div>
+    <div className="pasty-timeline-box text-sm">
+      {pasty.content.substring(0, 100)}
+    </div>
   );
 };
 

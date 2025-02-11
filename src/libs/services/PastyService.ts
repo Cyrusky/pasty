@@ -63,7 +63,7 @@ export class PastyService {
         },
         {
           id: 242,
-          pastyType: "Html",
+          pastyType: "Image",
           hash: "5a7638e75f7ad3d0f04936efa804f272",
           thumbnail: "",
           content:
@@ -93,7 +93,7 @@ export class PastyService {
         },
         {
           id: 239,
-          pastyType: "Rtf",
+          pastyType: "Image",
           hash: "824ee9e3f8106b1fca02277956fb7562",
           thumbnail: "",
           content:

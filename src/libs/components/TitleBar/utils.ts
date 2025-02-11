@@ -1,17 +1,18 @@
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { isWebDev } from "@/libs/utils/env.ts";
 
 export const minimize = () => {
-  if (process.env.NODE_ENV !== "development-web") {
+  if (!isWebDev) {
     getCurrentWindow().minimize();
   }
 };
 export const maximize = () => {
-  if (process.env.NODE_ENV !== "development-web") {
+  if (!isWebDev) {
     getCurrentWindow().maximize();
   }
 };
 export const close = () => {
-  if (process.env.NODE_ENV !== "development-web") {
+  if (!isWebDev) {
     getCurrentWindow().close();
   }
 };

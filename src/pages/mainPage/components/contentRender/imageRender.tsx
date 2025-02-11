@@ -1,20 +1,22 @@
+import "./imageRender.less";
 import { FC } from "react";
 import { RenderProps } from "@/types/props.ts";
 // @ts-ignore
 import Highlight from "react-highlight";
+import ImageThumbnail from "@/assets/images/thunbmail.png";
 
-export const TextRender: FC<RenderProps> = ({ pasty }) => {
+export const ImageRender: FC<RenderProps> = ({ pasty }) => {
   return (
-    <div className="pasty-timeline-box text-sm">
-      {pasty.content.substring(0, 100)}
+    <div className="image-render-box">
+      <img className={"image-thumbnail"} src={ImageThumbnail} />
     </div>
   );
 };
 
-export const TextPreviewRender: FC<RenderProps> = ({ pasty }) => {
+export const ImagePreviewRender: FC<RenderProps> = ({ pasty }) => {
   return (
     <div className="pasty-preview-render pasty-preview-render-text">
-      {pasty.content}
+      <img className={"image"} src={pasty.content} />
     </div>
   );
 };
