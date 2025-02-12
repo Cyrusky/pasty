@@ -1,5 +1,5 @@
 import type { StorageController } from "mobx-persist-store/lib/esm2017/types";
-import type { ApiResult, ConfigModel } from "@/types";
+import type { ConfigModel } from "@/types";
 import { CommandsName, ConfigKeys } from "@/types";
 import { callApi } from "@/libs/apis";
 import { DefaultConfig } from "@/libs/constants/configs.ts";
@@ -10,10 +10,7 @@ export const RustStorageAdapter: StorageController = {
   async getItem(_: ConfigKeys): Promise<string> {
     let data: ConfigModel[];
     try {
-      const result = await callApi<ApiResult<ConfigModel[]>>(
-        CommandsName.listAllConfig,
-      );
-      data = result.data;
+      data = await callApi<ConfigModel[]>(CommandsName.listAllConfig);
     } catch (_) {
       data = [];
     }
