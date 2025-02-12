@@ -6,7 +6,6 @@ import { ConfigKeys, PastyModel, PastyType } from "@/types";
 import { TextRender } from "@/pages/mainPage/components/contentRender/textRender.tsx";
 import { PastyItemIcons } from "@/pages/mainPage/components/PastyTimeLine/PastyItemIcons.tsx";
 import { ImageRender } from "@/pages/mainPage/components/contentRender/imageRender.tsx";
-import { RtfRender } from "@/pages/mainPage/components/contentRender/rtfRender.tsx";
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { Locales } from "@/libs/constants/configs.ts";
@@ -59,8 +58,8 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
         return <TextRender pasty={pasty} />;
       case PastyType.Image:
         return <ImageRender pasty={pasty} />;
-      case PastyType.Rtf:
-        return <RtfRender pasty={pasty} />;
+      // case PastyType.Rtf:
+      //   return <RtfRender pasty={pasty} />;
       default:
         return <div></div>;
     }

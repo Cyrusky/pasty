@@ -42,8 +42,6 @@ export const RtfRender: FC<RenderProps> = ({ pasty }) => {
     );
   }, [rtfDom]);
 
-  useWhyDidYouUpdate("RtfRender", { pasty, rtfDom, texts });
-
   return (
     <div className="rtf-render-box pasty-timeline-box">
       <div style={{ fontSize: 14 }}>

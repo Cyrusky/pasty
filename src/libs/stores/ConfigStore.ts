@@ -19,7 +19,18 @@ export class ConfigStore {
     makePersistable(this, {
       name: CONFIG_NAME,
       properties: ["configs"],
-      storage: isWebDev ? localStorage : RustStorageAdapter,
+      storage: {
+        getItem: isWebDev
+          ? localStorage.getItem.bind(this)
+          : RustStorageAdapter.getItem.bind(this),
+        setItem: isWebDev
+          ? localStorage.setItem.bind(this)
+          : RustStorageAdapter.setItem.bind(this),
+        removeItem: isWebDev
+          ? localStorage.removeItem.bind(this)
+          : RustStorageAdapter.removeItem.bind(this),
+      },
+      stringify: true,
     }).then();
   }
 

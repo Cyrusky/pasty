@@ -3,8 +3,6 @@ import { PanelContainer } from "@/libs/components/containers/PanelContainer.tsx"
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { EmptyPreviewRender } from "@/pages/mainPage/components/contentRender/emptyRender.tsx";
-import { PastyType } from "@/types";
-import { RtfPreviewRender } from "@/pages/mainPage/components/contentRender/rtfRender.tsx";
 
 export const PreviewPanel = observer(() => {
   const pastyStore = useStore(StoreNames.PastListStore);
@@ -12,9 +10,9 @@ export const PreviewPanel = observer(() => {
     <PanelContainer>
       <div className="h-full  ">
         {pastyStore.selectedPasty === undefined && <EmptyPreviewRender />}
-        {pastyStore.selectedPasty?.pastyType === PastyType.Rtf && (
-          <RtfPreviewRender pasty={pastyStore.selectedPasty} />
-        )}
+        {/*{pastyStore.selectedPasty?.pastyType === PastyType.Rtf && (*/}
+        {/*  <RtfPreviewRender pasty={pastyStore.selectedPasty} />*/}
+        {/*)}*/}
       </div>
     </PanelContainer>
   );

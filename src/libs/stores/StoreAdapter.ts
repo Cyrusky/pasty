@@ -17,7 +17,6 @@ export const RustStorageAdapter: StorageController = {
     } catch (_) {
       data = [];
     }
-    debugger;
     const configFromDatabase: Record<string, string> = {};
     data.forEach((e) => {
       configFromDatabase[e.key] = e.value;
@@ -35,15 +34,17 @@ export const RustStorageAdapter: StorageController = {
     });
   },
   async removeItem(_: string): Promise<void> {
+    debugger;
     await callApi(CommandsName.clearAllConfig);
   },
   async setItem(_: string, value: string): Promise<void> {
     const { configs } = JSON.parse(value);
     const keys = Object.keys(configs);
+    debugger;
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i] as ConfigKeys;
       const value = configs[key];
-      await callApi(CommandsName.updateConfigByKey, {
+      await callApi(CommandsName.addConfig, {
         key,
         value,
       });
