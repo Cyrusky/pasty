@@ -9,6 +9,7 @@ import { ImageRender } from "@/pages/mainPage/components/contentRender/imageRend
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { Locales } from "@/libs/constants/configs.ts";
+import { RtfRender } from "@/pages/mainPage/components/contentRender/rtfRender.tsx";
 
 interface TimeLineItemProps {
   index: number;
@@ -58,8 +59,8 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = ({
         return <TextRender pasty={pasty} />;
       case PastyType.Image:
         return <ImageRender pasty={pasty} />;
-      // case PastyType.Rtf:
-      //   return <RtfRender pasty={pasty} />;
+      case PastyType.Rtf:
+        return <RtfRender pasty={pasty} />;
       default:
         return <div></div>;
     }

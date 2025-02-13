@@ -1,13 +1,17 @@
-import "./imageRender.less";
+import "./rtfRender.less";
 import { FC, useEffect, useMemo, useState } from "react";
 import { RenderProps } from "@/types/props.ts";
 // @ts-ignore
 import Highlight from "react-highlight";
-import { RTFJS } from "rtf.js";
+import { EMFJS, RTFJS, WMFJS } from "rtf.js";
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { PastyType } from "@/types";
-import { useWhyDidYouUpdate } from "ahooks";
+import { isWebDev } from "@/libs/utils/env.ts";
+
+RTFJS.loggingEnabled(isWebDev);
+WMFJS.loggingEnabled(isWebDev);
+EMFJS.loggingEnabled(isWebDev);
 
 const stringToArrayBuffer = (string: string) => {
   const buffer = new ArrayBuffer(string.length);
@@ -19,33 +23,27 @@ const stringToArrayBuffer = (string: string) => {
 };
 
 const useRtf = (rtf: string) => {
-  const [doms, setDoms] = useState<HTMLElement[]>([]);
-  const doc = new RTFJS.Document(stringToArrayBuffer(rtf), {});
+  const [html, setHtml] = useState<string>("");
+  const [text, setText] = useState<string[]>([]);
 
   useEffect(() => {
+    const doc = new RTFJS.Document(stringToArrayBuffer(rtf), {});
     doc.render().then((res) => {
-      setDoms(res);
+      setHtml(res.map((d) => d.innerHTML).join(""));
+      setText(res.map((d) => d.innerText));
     });
-  }, []);
-  return doms;
+  }, [rtf]);
+
+  return { html, text };
 };
 
 export const RtfRender: FC<RenderProps> = ({ pasty }) => {
-  const rtfDom = useRtf(pasty.content);
-  const [texts, setTexts] = useState<string[]>([]);
-
-  useEffect(() => {
-    setTexts(
-      rtfDom.map((node) => {
-        return node.innerText;
-      }),
-    );
-  }, [rtfDom]);
+  const { text } = useRtf(pasty.content);
 
   return (
     <div className="rtf-render-box pasty-timeline-box">
       <div style={{ fontSize: 14 }}>
-        {texts.map((text) => {
+        {text.map((text) => {
           return <div>{text}</div>;
         })}
       </div>
@@ -54,23 +52,19 @@ export const RtfRender: FC<RenderProps> = ({ pasty }) => {
 };
 
 export const RtfPreviewRender: FC<RenderProps> = ({ pasty }) => {
-  const rtfDom = useRtf(pasty.content);
+  const { html } = useRtf(pasty.content);
   const pastyStore = useStore(StoreNames.PastListStore);
 
   useMemo(() => {
     if (pastyStore.selectedPasty?.pastyType !== PastyType.Rtf) {
       return;
     }
-    let dom = document.getElementById(`pasty-preview-rtf-container`);
-    if (!dom) return;
-    dom.innerHTML = "";
-    rtfDom.map((node) => {
-      node.style.fontSize = "10px !important";
-      dom?.appendChild(node);
-    });
-  }, [rtfDom]);
-
-  useWhyDidYouUpdate("RtfPreviewRender", { rtfDom, pastyStore, pasty });
+    setTimeout(() => {
+      let containerDom = document.getElementById(`pasty-preview-rtf-container`);
+      if (!containerDom) return;
+      containerDom.innerHTML = html;
+    }, 10);
+  }, [html]);
 
   return (
     <div className="pasty-preview-render pasty-preview-render-rtf">
