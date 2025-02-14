@@ -1,7 +1,7 @@
 import "./index.less";
 import { WindowButtons } from "@/libs/components/TitleBar/components/buttons.tsx";
 import { FC } from "react";
-import { TitleBarTabs } from "@/components/TitleBarTabs.tsx";
+import { TitleBarTabs } from "@/libs/components/TitleBarTabs.tsx";
 import { useTranslation } from "react-i18next";
 
 export const TitleBar: FC = () => {

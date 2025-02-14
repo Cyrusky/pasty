@@ -9,7 +9,7 @@
 
   &:hover {
     .timeline-left {
-      color: var(--color-primary-content);
+      color: var(--color-primary);
     }
     .timeline-dot {
       width: calc(var(--dot-size) + 3px);
@@ -35,7 +35,7 @@
   display: flex;
   width: calc(var(--dot-left) - (var(--dot-size) + 30px) / 2);
   position: absolute;
-  color: rgba(from var(--color-primary-content) r g b / 0.5);
+  color: rgba(from var(--color-primary) r g b / 0.5);
   flex-flow: row nowrap;
   justify-content: space-between;
   transition: var(--default-transition);
@@ -50,7 +50,8 @@
     margin-left: 10px;
     text-align: center;
     box-shadow: 0 0 calc((var(--dot-size) - 2px) / 2) var(--color-accent);
-    background-color: var(--color-accent-content);
+    background-color: var(--color-accent);
+    color: var(--color-primary-content);
   }
 
   .time {
@@ -78,6 +79,7 @@
   border-radius: 5px;
   display: flex;
   flex-flow: column nowrap;
+  color: var(--color-primary);
   row-gap: 10px;
  }
 
@@ -87,8 +89,8 @@
   height: var(--dot-size);
   position: absolute;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--color-tips-accent);
-  background: var(--color-tips-accent-content);
+  box-shadow: 0 0 0 1px var(--color-accent);
+  background: var(--color-accent);
   text-align: center;
   top: 1px;
   line-height: 40px;

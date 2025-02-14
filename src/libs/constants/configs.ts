@@ -42,3 +42,9 @@ export const DefaultConfig: Record<ConfigKeys, string> = {
   [ConfigKeys.AppTheme]: "light",
   [ConfigKeys.AppLocal]: "en_US",
 };
+
+export const dayjsLocalMap: Record<Locales, string> = {
+  en_US: "en",
+  zh_CN: "zh-cn",
+  zh_TW: "zh-tw",
+};

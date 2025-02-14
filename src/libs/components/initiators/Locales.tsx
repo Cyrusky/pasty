@@ -7,15 +7,9 @@ import { ConfigKeys } from "@/types";
 import dayjs from "dayjs";
 import dayJs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { Locales } from "@/libs/constants/configs.ts";
+import { dayjsLocalMap, Locales } from "@/libs/constants/configs.ts";
 
 dayJs.extend(relativeTime);
-
-const dayjsLocalMap: Record<Locales, string> = {
-  en_US: "en",
-  zh_CN: "zh-cn",
-  zh_TW: "zh-tw",
-};
 
 export const LocaleInitiator = observer(() => {
   const settingStore = useStore(StoreNames.Configs);
@@ -28,10 +22,8 @@ export const LocaleInitiator = observer(() => {
 
   useEffect(() => {
     const local = settingStore.configs[ConfigKeys.AppLocal];
-    i18n.changeLanguage(local).then(() => {
-      debugger;
-      dayjs.locale(dayjsLocalMap[local as Locales]);
-    });
+    i18n.changeLanguage(local);
+    dayjs.locale(dayjsLocalMap[local as Locales]);
   }, [settingStore.configs[ConfigKeys.AppLocal]]);
 
   return <></>;
