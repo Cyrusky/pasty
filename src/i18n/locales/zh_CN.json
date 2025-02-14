@@ -1,0 +1,33 @@
+{
+  "app": {
+    "pasty_setting": "Pasty 设置"
+  },
+  "settings": {
+    "menu": {
+      "title": "设置",
+      "appearance": "外观 & 主题",
+      "clipboard": "剪贴板设置"
+    },
+    "field": {
+      "required": "必填",
+      "theme": "主题"
+    }
+  },
+  "main": {
+    "search-panel": {
+      "search": "输入搜索...(仅支持文本搜索)"
+    },
+    "empty-text": "没有剪贴板历史记录，复制点什么试试吧。"
+  },
+  "toolbar": {
+    "all": "全部",
+    "text": "文本",
+    "html": "HTML",
+    "rtf": "富文本（RTF)",
+    "image": "图片",
+    "file": "文件"
+  },
+  "tips": {
+    "nothing-to-preview": "请选择一条记录进行预览"
+  }
+}

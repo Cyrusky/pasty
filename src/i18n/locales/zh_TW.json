@@ -1,0 +1,33 @@
+{
+  "app": {
+    "pasty_setting": "Pasty 設定"
+  },
+  "settings": {
+    "menu": {
+      "title": "設定",
+      "appearance": "外觀 & 主題",
+      "clipboard": "剪貼簿設定"
+    },
+    "field": {
+      "required": "必填",
+      "theme": "主題"
+    }
+  },
+  "main": {
+    "search-panel": {
+      "search": "輸入搜尋...(僅支援文字搜尋)"
+    },
+    "empty-text": "沒有剪貼簿歷史記錄，複製點什麼試試吧。"
+  },
+  "toolbar": {
+    "all": "全部",
+    "text": "文字",
+    "html": "HTML",
+    "rtf": "豐富文字（RTF）",
+    "image": "圖片",
+    "file": "檔案"
+  },
+  "tips": {
+    "nothing-to-preview": "請選擇一條記錄進行預覽"
+  }
+}

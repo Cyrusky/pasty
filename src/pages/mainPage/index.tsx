@@ -9,6 +9,7 @@ import { ServiceNames } from "@/libs/constants";
 
 export const MainPage: React.FC = observer(() => {
   const pastyService = useService(ServiceNames.PastyService);
+
   useEffect(() => {
     pastyService.loadPasty();
   }, []);

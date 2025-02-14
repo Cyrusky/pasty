@@ -4,7 +4,10 @@ use entities::pasty::{
     Model as PastyModel,
 };
 use sea_orm::ActiveValue::Set;
-use sea_orm::{ActiveModelTrait, ActiveValue, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait, QueryFilter, QueryOrder, QuerySelect};
+use sea_orm::{
+    ActiveModelTrait, ActiveValue, ColumnTrait, EntityTrait, IntoActiveModel, PaginatorTrait,
+    QueryFilter, QueryOrder, QuerySelect,
+};
 use utils::time::get_now_time;
 
 pub async fn query_pasty_by_page(page: u64, page_size: u64) -> Result<Vec<PastyModel>, String> {
@@ -66,7 +69,11 @@ pub async fn create_pasty(pasty: PastyModel) -> Result<PastyModel, String> {
 
 pub async fn query_all_pasty() -> Result<Vec<PastyModel>, String> {
     let conn = get_connect();
-    match PastyEntity::find().order_by_desc(PastyColumn::UpdatedAt).all(&conn).await {
+    match PastyEntity::find()
+        .order_by_desc(PastyColumn::UpdatedAt)
+        .all(&conn)
+        .await
+    {
         Ok(pasty) => Ok(pasty),
         Err(err) => Err(err.to_string()),
     }

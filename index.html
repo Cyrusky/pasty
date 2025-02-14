@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background: transparent">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -8,10 +8,14 @@
        #root {
            background: transparent;
        }
+       .shadow-box {
+           background-color: var(--color-base-100);
+           box-shadow: 0 3px 3px 1px rgba(0, 0, 0, 0.2), 0 6px 4px 2px rgba(0, 0, 0, 0.19);
+       }
     </style>
 </head>
-<body>
-<div id="root"></div>
+<body style="background: transparent">
+<div class="bg-transparent rounded-lg shadow-box" id="root"></div>
 <script src="/src/main.tsx" type="module"></script>
 </body>
 </html>

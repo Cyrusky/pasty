@@ -28,7 +28,14 @@ export default defineConfig(async () => ({
     },
     devSourcemap: true,
   },
-  plugins: [react(), tsconfigPaths(), tailwindcss()],
+  plugins: [
+    react({
+      jsxRuntime: "automatic",
+      include: "**/*.{js,jsx,ts,tsx}",
+    }),
+    tsconfigPaths(),
+    tailwindcss(),
+  ],
   esbuild: {
     target: "es2022",
     tsconfigRaw: {

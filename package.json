@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "dev": "tauri dev",
-    "icon": "iconfont-h5"
+    "icon": "iconfont-h5 && node ./scripts/moveJsToJsx.js"
   },
   "dependencies": {
     "@arco-design/web-react": "^2.65.0",

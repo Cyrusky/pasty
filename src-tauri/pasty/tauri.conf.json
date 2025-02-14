@@ -14,15 +14,15 @@
     "windows": [
       {
         "title": "pasty",
-        "width": 1000,
-        "height": 650,
+        "width": 1008,
+        "height": 658,
         "center": true,
         "fullscreen": false,
         "resizable": false,
         "alwaysOnTop": false,
         "decorations": false,
         "transparent": true,
-        "shadow": true,
+        "shadow": false,
         "dragDropEnabled": false
       }
     ],

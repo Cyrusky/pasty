@@ -12,7 +12,13 @@ impl MigrationTrait for Migration {
                 Table::create()
                     .table(Asset::Table)
                     .if_not_exists()
-                    .col(integer(Asset::Id).unsigned().not_null().primary_key().auto_increment())
+                    .col(
+                        integer(Asset::Id)
+                            .unsigned()
+                            .not_null()
+                            .primary_key()
+                            .auto_increment(),
+                    )
                     .col(integer(Asset::PastyId).unsigned().not_null())
                     .col(string(Asset::PastyType).not_null())
                     .col(string(Asset::AssetPath))

@@ -1,0 +1,33 @@
+{
+  "app": {
+    "pasty_setting": "Pasty Setting"
+  },
+  "settings": {
+    "menu": {
+      "title": "Settings",
+      "appearance": "Appearance & Theme",
+      "clipboard": "Clipboard"
+    },
+    "field": {
+      "required": "Required",
+      "theme": "Themes"
+    }
+  },
+  "main": {
+    "search-panel": {
+      "search": "Type to search... (Only text pasty supported)"
+    },
+    "empty-text": "Nothing in pasty history, please try to copy something."
+  },
+  "toolbar": {
+    "all": "All",
+    "text": "Text",
+    "html": "HTML",
+    "rtf": "Rich Text Format",
+    "image": "Image",
+    "file": "File"
+  },
+  "tips": {
+    "nothing-to-preview": "Please select item to preview."
+  }
+}

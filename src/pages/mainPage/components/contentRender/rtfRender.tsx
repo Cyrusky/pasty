@@ -43,8 +43,8 @@ export const RtfRender: FC<RenderProps> = ({ pasty }) => {
   return (
     <div className="rtf-render-box pasty-timeline-box">
       <div style={{ fontSize: 14 }}>
-        {text.map((text) => {
-          return <div>{text}</div>;
+        {text.map((text, index) => {
+          return <div key={index}>{text}</div>;
         })}
       </div>
     </div>
