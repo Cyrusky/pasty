@@ -1,0 +1,9 @@
+.pasty-render {
+  font-size: $size-font-code-default;
+
+  &-text {
+    padding: 5px;
+    background-color: var(--color-secondary-bg-1);
+    white-space: pre-wrap;
+  }
+}

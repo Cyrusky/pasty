@@ -40,7 +40,8 @@
     "react-router": "^7.1.5",
     "reflect-metadata": "^0.2.2",
     "rtf.js": "^3.0.9",
-    "tailwindcss": "^4.0.5"
+    "daisyui": "5.0.0-beta.7",
+    "tailwindcss": "^4.0.6"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.2.7",
@@ -52,21 +53,30 @@
     "commitizen": "^4.3.1",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
-    "daisyui": "5.0.0-beta.7",
     "eslint": "^9.20.0",
     "eslint-plugin-prettier": "^5.2.3",
     "globals": "^15.14.0",
-    "less": "^4.2.2",
     "md5": "^2.3.0",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.2",
+    "postcss-import": "^16.1.0",
     "postcss-js": "^4.0.1",
+    "postcss-nesting": "^13.0.1",
     "postcss-pxtorem": "^6.1.0",
     "prettier": "^3.4.2",
     "react-iconfont-cli": "^2.0.2",
+    "sass": "^1.85.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.11.0",
+    "tailwindcss": "^4.0.6",
     "ts-node": "^10.9.2",
     "typescript": "~5.6.3",
     "typescript-eslint": "^8.23.0",
     "vite": "^6.1.0",
+    "vite-plugin-stylelint": "^6.0.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "config": {
@@ -85,6 +95,11 @@
       "last 1 firefox version",
       "last 1 safari version",
       "last 1 ie version"
+    ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher"
     ]
   }
 }

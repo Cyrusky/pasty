@@ -1,4 +1,4 @@
-import "./PreviewPanel.less";
+import "./PreviewPanel.scss";
 import { observer } from "mobx-react-lite";
 import { PanelContainer } from "@/libs/components/containers/PanelContainer.tsx";
 import { useStore } from "@/hooks";

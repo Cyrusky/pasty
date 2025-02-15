@@ -1,9 +1,9 @@
 .title-bar {
-  height: var(--title-bar-height);
+  position: relative;
   display: flex;
+  height: $size-title-bar-height;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-end;
-  background: var(--title-bar-bg);
-  position: relative;
+  background: $color-title-bar-bg;
 }

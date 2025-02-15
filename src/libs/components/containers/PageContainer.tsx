@@ -1,4 +1,4 @@
-import "./PageContainer.less";
+import "./PageContainer.scss";
 import { CSSProperties, FC, PropsWithChildren } from "react";
 import clsx from "clsx";
 

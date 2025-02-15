@@ -1,4 +1,4 @@
-import "./PastyTimeLineItem.less";
+import "./PastyTimeLineItem.scss";
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import dayjs from "dayjs";
@@ -17,6 +17,7 @@ interface TimeLineItemProps {
   pasty: PastyModel;
   onClick: (pasty: PastyModel) => void;
 }
+
 export const PastyTimeLineItem: FC<TimeLineItemProps> = observer(
   ({ index, pasty, onClick }) => {
     const configStore = useStore(StoreNames.Configs);
@@ -42,7 +43,6 @@ export const PastyTimeLineItem: FC<TimeLineItemProps> = observer(
       const now = new Date();
       const updatedAt = new Date(pasty.updatedAt);
       const time = dayjs(updatedAt);
-      debugger;
 
       if (now.getTime() - updatedAt.getTime() < 1000 * 60 * 60 * 24) {
         setHms(time.fromNow());

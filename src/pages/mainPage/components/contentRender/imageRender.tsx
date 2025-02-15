@@ -1,7 +1,6 @@
-import "./imageRender.less";
+import "./imageRender.scss";
 import { FC } from "react";
-import { RenderProps } from "@/types/props.ts";
-// @ts-ignore
+import { RenderProps } from "@/types/props.ts"; // @ts-ignore
 import Highlight from "react-highlight";
 
 export const ImageRender: FC<RenderProps> = ({ pasty }) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.less";
+import "./index.scss";
 import { PageContainer } from "@/libs/components/containers/PageContainer.tsx";
 import { observer } from "mobx-react-lite";
 import { MdDeleteOutline, MdOutlineContentCopy } from "react-icons/md";

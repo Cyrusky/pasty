@@ -1,4 +1,4 @@
-import "./PastyItemIcons.less";
+import "./PastyItemIcons.scss";
 import { FC } from "react";
 import { PastyModel } from "@/types";
 import { MdDeleteOutline, MdOutlineContentCopy } from "react-icons/md";

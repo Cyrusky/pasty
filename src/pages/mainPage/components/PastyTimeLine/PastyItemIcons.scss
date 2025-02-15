@@ -1,0 +1,35 @@
+.render-tool-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+  place-content: center flex-end;
+  transition: all 0.3s ease;
+
+  .icons {
+    padding: 3px;
+    border-radius: 3px;
+  }
+}
+
+.timeline-item {
+  .icons {
+    cursor: pointer;
+    opacity: 0;
+
+    &-active {
+      background-color: rgba(from $color-accent r g b / 20%);
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: rgba(from $color-accent r g b / 20%);
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    .icons {
+      opacity: 1;
+    }
+  }
+}

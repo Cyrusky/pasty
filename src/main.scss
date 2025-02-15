@@ -1,0 +1,46 @@
+html {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  display: flex;
+  overflow: hidden;
+  width: $full-width;
+  height: $full-height;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: $size-border-roundness;
+  color: $color-base-content;
+  font-size: $size-font-default;
+}
+
+.full-w {
+  width: $full-width;
+}
+
+.full-h {
+  height: $full-height;
+}
+
+.full {
+  width: $full-width;
+  height: $full-height;
+}
+
+.global-container {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  flex-flow: column nowrap;
+  border-radius: $size-border-roundness;
+  background-color: $color-main-page-bg;
+  row-gap: 0;
+}

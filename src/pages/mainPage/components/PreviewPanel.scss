@@ -1,0 +1,13 @@
+.preview-panel-outer {
+  height: 100%;
+  padding: 20px;
+
+  .preview-panel {
+    overflow: hidden;;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid color-mix(in srgb, $color-neutral 30%, transparent);
+    border-radius: 5px;
+    background-color: color-mix(in srgb, $color-neutral 10%, transparent);
+  }
+}

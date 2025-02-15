@@ -1,14 +1,14 @@
 import "normalize.css";
+import "@/main.css";
+import "@/main.scss";
 import "mac-scrollbar/dist/mac-scrollbar.css";
 import "reflect-metadata";
-import "./main.css";
 import "./i18n";
 import { BrowserRouter } from "react-router";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ContextProvider } from "@/libs/components/providers/ContextProvider.tsx";
-import { Router } from "@/router";
 import { Initiator } from "@/libs/components/initiators";
 import { TitleBar } from "@/libs/components/TitleBar";
 import "dayjs/locale/zh-cn";
@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <div className="global-container">
           <Initiator />
           <TitleBar />
-          <Router />
+          {/*<Router />*/}
         </div>
       </ContextProvider>
     </BrowserRouter>

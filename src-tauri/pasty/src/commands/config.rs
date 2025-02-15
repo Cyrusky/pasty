@@ -34,3 +34,9 @@ pub async fn set_shadow(app: AppHandle, shadow: bool){
     let window = app.get_window("main").unwrap();
     window.set_shadow(shadow).expect("TODO: panic message");
 }
+
+#[tauri::command]
+pub async fn set_always_on_top(app: AppHandle, enable: bool){
+    let window = app.get_window("main").unwrap();
+    window.set_always_on_top(enable).expect("TODO: panic message");
+}

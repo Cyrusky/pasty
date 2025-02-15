@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./index.less";
+import "./index.scss";
 import { PageContainer } from "@/libs/components/containers/PageContainer.tsx";
 import { PastyListPanel } from "@/pages/mainPage/components/PastyListPanel.tsx";
 import { PreviewPanel } from "@/pages/mainPage/components/PreviewPanel.tsx";

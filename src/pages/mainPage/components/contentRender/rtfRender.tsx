@@ -1,7 +1,6 @@
-import "./rtfRender.less";
+import "./rtfRender.scss";
 import { FC, useEffect, useMemo, useState } from "react";
-import { RenderProps } from "@/types/props.ts";
-// @ts-ignore
+import { RenderProps } from "@/types/props.ts"; // @ts-ignore
 import Highlight from "react-highlight";
 import { EMFJS, RTFJS, WMFJS } from "rtf.js";
 import { useStore } from "@/hooks";

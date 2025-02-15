@@ -1,0 +1,5 @@
+.panel-container {
+  height: $full-height - $size-title-bar-height;
+  padding: 12px;
+  overflow-y: scroll;
+}

@@ -1,4 +1,4 @@
-import "./index.less";
+import "./index.scss";
 import { observer } from "mobx-react-lite";
 import { PastyTimeLineItem } from "@/pages/mainPage/components/PastyTimeLine/PastyTimeLineItem.tsx";
 import { useStore } from "@/hooks";

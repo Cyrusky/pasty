@@ -1,0 +1,13 @@
+$var-timeline-left: 150px;
+
+.timeline-item {
+  display: flex;
+  min-height: 100px;
+  flex-flow: row nowrap;
+  column-gap: 2px;
+
+  .timeline-left {
+    width: $var-timeline-left;
+    background-color: red;
+  }
+} 

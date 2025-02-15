@@ -5,23 +5,23 @@
   column-gap: 5px;
 
   .button {
-    height: 100%;
     display: flex;
     width: fit-content;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    column-gap: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
     padding: 6px;
+    border-radius: 5px;
+    column-gap: 10px;
+    cursor: pointer;
+    font-size: 16px;
 
     &-active {
-      background-color: rgba(101, 101, 101, 0.22);
+      background-color: rgb(101 101 101 / 22%);
     }
 
     &:hover {
-      background: rgba(101, 101, 101, 0.22);
+      background: rgb(101 101 101 / 22%);
     }
   }
 }

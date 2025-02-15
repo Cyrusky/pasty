@@ -1,4 +1,4 @@
-import "./index.less";
+import "./index.scss";
 import { WindowButtons } from "@/libs/components/TitleBar/components/buttons.tsx";
 import { FC } from "react";
 import { TitleBarTabs } from "@/libs/components/TitleBarTabs.tsx";

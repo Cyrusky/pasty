@@ -3,8 +3,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 import react from "@vitejs/plugin-react";
-import * as path from "node:path";
 import autoprefixer from "autoprefixer";
+import * as path from "node:path";
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -15,16 +15,20 @@ export default defineConfig(async () => ({
       NODE_ENV: process.env.NODE_ENV,
     },
   },
+  resolve: {
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+  },
   css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+        @use "sass:color";
+        @use "${path.resolve(__dirname, "src/assets/styles/base")}" as *;
+        `,
+      },
+    },
     postcss: {
       plugins: [autoprefixer],
-    },
-    preprocessorOptions: {
-      less: {
-        math: "always",
-        javascriptEnabled: true,
-        additionalData: `@import "${path.resolve(__dirname, "src/assets/styles/base.less")}";`,
-      },
     },
     devSourcemap: true,
   },

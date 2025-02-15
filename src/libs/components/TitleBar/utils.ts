@@ -1,26 +1,13 @@
-import { getCurrentWindow } from "@tauri-apps/api/window";
-import { isWebDev } from "@/libs/utils/env.ts";
 import { IOC } from "@/libs/container";
 import { StoreNames } from "@/libs/constants";
-import { ConfigKeys } from "@/types";
+import { CommandsName, ConfigKeys } from "@/types";
 import { dayjsLocalMap, Locales, Themes } from "@/libs/constants/configs.ts";
 import { ConfigStore } from "@/libs/stores/ConfigStore.ts";
 import dayjs from "dayjs";
+import { callApi } from "@/libs/apis";
 
-export const minimize = () => {
-  if (!isWebDev) {
-    getCurrentWindow().minimize();
-  }
-};
-export const maximize = () => {
-  if (!isWebDev) {
-    getCurrentWindow().maximize();
-  }
-};
-export const close = () => {
-  if (!isWebDev) {
-    getCurrentWindow().close();
-  }
+export const callSetAlwaysOnTop = (enable: boolean) => {
+  callApi(CommandsName.setAlwaysOnTop, { enable });
 };
 
 export const switchLocale = () => {

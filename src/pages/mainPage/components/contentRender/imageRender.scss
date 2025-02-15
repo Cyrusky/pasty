@@ -1,9 +1,9 @@
 .image-render-box {
   padding: 0 30px 0 0;
+
   .image-thumbnail {
-    transition: scale 0.3s ease;
     border-radius: 15px;
-    box-shadow: 0 0 5px 8px rgba(from var(--color-accent) r g b / 0.1);
+    transition: scale 0.3s ease;
   }
 
   &:hover {

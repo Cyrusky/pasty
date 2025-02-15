@@ -1,6 +1,6 @@
-import "./buttons.less";
+import "./buttons.scss";
 import {
-  minimize,
+  callSetAlwaysOnTop,
   randomTheme,
   switchLocale,
 } from "@/libs/components/TitleBar/utils.ts";
@@ -13,13 +13,20 @@ import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
 import { CommandsName, ConfigKeys } from "@/types";
 import { invoke } from "@tauri-apps/api/core";
+import clsx from "clsx";
 
 export const WindowButtons: FC = observer(() => {
   const configStore = useStore(StoreNames.Configs);
   const [withShadow, setWithShadow] = useState(false);
+  const [alwaysOnTop, setAlwaysOnTop] = useState(false);
   const handleTest = () => {
     invoke(CommandsName.setShadow, { shadow: !withShadow });
     setWithShadow(!withShadow);
+  };
+
+  const handleAlwaysOnTop = () => {
+    callSetAlwaysOnTop(alwaysOnTop);
+    setAlwaysOnTop(!alwaysOnTop);
   };
 
   return (
@@ -34,7 +41,12 @@ export const WindowButtons: FC = observer(() => {
       <div className="button">
         <RiTranslateAi onClick={switchLocale} />
       </div>
-      <div className={"button"} onClick={minimize}>
+      <div
+        className={clsx("button", {
+          "button-active": alwaysOnTop,
+        })}
+        onClick={handleAlwaysOnTop}
+      >
         <GiPin />
       </div>
     </div>

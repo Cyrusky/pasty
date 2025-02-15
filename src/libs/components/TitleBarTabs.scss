@@ -1,0 +1,102 @@
+$tab-bar-roundness: 12px;
+
+.title-bar-tabs-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow: hidden;
+  height: $size-title-bar-height - 10px;
+  flex: 1;
+  flex-flow: row nowrap;
+  padding: 0 2 * $size-title-bar-tab-roundness 0 2 * $size-title-bar-tab-roundness;
+  column-gap: 0;
+
+  .title-bar-tab {
+    position: relative;
+    display: flex;
+    overflow: visible;
+    width: fit-content;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0 20px;
+    border-top-left-radius: $size-title-bar-tab-roundness;
+    border-top-right-radius: $size-title-bar-tab-roundness;
+    cursor: default;
+    line-height: 100%;
+    user-select: none;
+
+    &:first-child {
+      width: $size-title-bar-tab-roundness;
+      height: 100%;
+    }
+
+    &:last-child {
+      width: calc($size-title-bar-tab-roundness * 2);
+      height: 100%;
+    }
+  }
+
+  .title-bar-tab-active {
+    z-index: 11;
+    border-radius: $size-title-bar-tab-roundness $size-title-bar-tab-roundness 0 0;
+    background-color: $color-title-bar-tab-bg-active;
+    font-size: $size-font-default + 2px;
+    font-weight: bold;
+
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: calc(-0.5 * $size-title-bar-tab-roundness);
+      width: $size-title-bar-tab-roundness;
+      height: 100%;
+      background-color: $color-title-bar-tab-bg-active;
+      border-top-left-radius: $size-title-bar-tab-roundness;
+      content: '';
+      transform: skewX(-15deg);
+    }
+
+    &::after {
+      position: absolute;
+      right: calc($size-title-bar-tab-roundness * -0.5);
+      bottom: 0;
+      width: $size-title-bar-tab-roundness;
+      height: 100%;
+      background-color: $color-title-bar-tab-bg-active;
+      border-top-right-radius: $size-title-bar-tab-roundness;
+      content: '';
+      transform: skewX(15deg);
+    }
+  }
+
+  .title-bar-tab-inactive {
+    background-color: $color-title-bar-tab-bg;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      z-index: 12;
+      bottom: 0;
+      left: calc(0.5 * $size-title-bar-tab-roundness);
+      width: $size-title-bar-tab-roundness;
+      height: 100%;
+      background-color:$color-title-bar-tab-bg;
+      border-bottom-left-radius: $size-title-bar-tab-roundness;
+      content: '';
+      transform: skewX(15deg);
+    }
+
+    &::after {
+      position: absolute;
+      z-index: 12;
+      right: calc($size-title-bar-tab-roundness * 0.5);
+      bottom: 0;
+      width: $size-title-bar-tab-roundness;
+      height: 100%;
+      background-color: $color-title-bar-tab-bg;
+      border-bottom-right-radius: $size-title-bar-tab-roundness;
+      content: '';
+      transform: skewX(-15deg);
+    }
+  }
+}

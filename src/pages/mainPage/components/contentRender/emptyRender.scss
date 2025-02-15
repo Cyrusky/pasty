@@ -4,14 +4,15 @@
 
 .empty-render-preview {
   display: flex;
+  height: 100%;
   flex-flow: column nowrap;
-  row-gap: 30px;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  color: color-mix(in srgb $color-neutral-content 20%, rgb(0 0 0 / 0%));
   font-size: 1.5rem;
+  row-gap: 30px;
   text-align: center;
-  color: color-mix(in srgb var(--color-neutral-content) 20%, transparent);
+
   div {
     text-align: center;
   }

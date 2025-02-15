@@ -1,4 +1,4 @@
-import "./TitleBarTabs.less";
+import "./TitleBarTabs.scss";
 import { FC, ReactNode, useState } from "react";
 import clsx from "clsx";
 
@@ -33,7 +33,7 @@ export const TitleBarTabs: FC<TitleBarTabsProps> = ({
           {tab}
         </div>
       ))}
-      <div className="title-bar-tab title-bar-tab-inactive"> </div>
+      <div className="title-bar-tab title-bar-tab-inactive"></div>
     </div>
   );
 };

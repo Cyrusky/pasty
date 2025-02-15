@@ -1,4 +1,4 @@
-import "./PanelContainer.less";
+import "./PanelContainer.scss";
 import { observer } from "mobx-react-lite";
 import type { FC, PropsWithChildren } from "react";
 import { MacScrollbar } from "mac-scrollbar";
