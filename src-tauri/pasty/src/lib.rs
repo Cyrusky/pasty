@@ -4,6 +4,7 @@ mod core;
 
 use commands::config::{
     add_config, clear_all_config, delete_config_by_key, get_config_by_key, list_all_config,
+    set_shadow
 };
 use commands::pasty::{clear_all_pasty, get_all_pasty, get_paged_pasty};
 use tauri::{App, Manager};
@@ -40,6 +41,7 @@ pub fn run() {
             clear_all_config,
             get_config_by_key,
             delete_config_by_key,
+            set_shadow
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

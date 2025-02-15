@@ -4,21 +4,30 @@ import {
   randomTheme,
   switchLocale,
 } from "@/libs/components/TitleBar/utils.ts";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { GiPin } from "react-icons/gi";
 import { RiTranslateAi } from "react-icons/ri";
-import { IoColorPaletteSharp } from "react-icons/io5";
+import { IoAccessibility, IoColorPaletteSharp } from "react-icons/io5";
 import { observer } from "mobx-react-lite";
 import { useStore } from "@/hooks";
 import { StoreNames } from "@/libs/constants";
-import { ConfigKeys } from "@/types";
+import { CommandsName, ConfigKeys } from "@/types";
+import { invoke } from "@tauri-apps/api/core";
 
 export const WindowButtons: FC = observer(() => {
   const configStore = useStore(StoreNames.Configs);
+  const [withShadow, setWithShadow] = useState(false);
+  const handleTest = () => {
+    invoke(CommandsName.setShadow, { shadow: !withShadow });
+    setWithShadow(!withShadow);
+  };
 
   return (
     <div className="button-container">
       <div className="button">{configStore.configs[ConfigKeys.AppTheme]}</div>
+      <div className="button">
+        <IoAccessibility onClick={handleTest} />
+      </div>
       <div className="button">
         <IoColorPaletteSharp onClick={randomTheme} />
       </div>

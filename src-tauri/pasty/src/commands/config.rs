@@ -2,6 +2,7 @@ use crate::biz::config::{
     clear_config, create_or_update_config, delete_config, get_config, query_all_configs,
 };
 use entities::configs::Model as ConfigModel;
+use tauri::{AppHandle, Manager};
 
 #[tauri::command]
 pub async fn list_all_config() -> Result<Vec<ConfigModel>, String> {
@@ -26,4 +27,10 @@ pub async fn add_config(key: String, value: String) -> Result<ConfigModel, Strin
 #[tauri::command]
 pub async fn clear_all_config() -> Result<u64, String> {
     clear_config().await
+}
+
+#[tauri::command]
+pub async fn set_shadow(app: AppHandle, shadow: bool){
+    let window = app.get_window("main").unwrap();
+    window.set_shadow(shadow).expect("TODO: panic message");
 }

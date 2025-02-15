@@ -62,7 +62,7 @@ export const RtfPreviewRender: FC<RenderProps> = ({ pasty }) => {
     setTimeout(() => {
       let containerDom = document.getElementById(`pasty-preview-rtf-container`);
       if (!containerDom) return;
-      containerDom.innerHTML = html;
+      containerDom.innerHTML = html.replace(/<\/span>/g, "</span\><br/>");
     }, 10);
   }, [html]);
 

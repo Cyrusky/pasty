@@ -9,6 +9,7 @@ import type {
 
 export enum CommandsName {
   // Pasty commands
+  setShadow = "set_shadow",
   getPagedPasty = "get_paged_pasty",
   getAllPasty = "get_all_pasty",
   clearAllPasty = "clear_all_pasty",
